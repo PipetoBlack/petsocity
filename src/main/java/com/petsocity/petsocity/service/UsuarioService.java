@@ -38,6 +38,12 @@ public class UsuarioService {
     }
 
     // actualizar
+    public Usuario actualizarUsuario(Long id Usuario datosActualizados){
+        return usuarioRepository.findById(id).map(usuario ->{
+            usuario.setNombre(datosActualizados.getNombre());
+            usuario.setEmail(datosActualizados.getEmail());
+        })
+    }
 
     // eliminar
     public void eliminarUsuario(Long id){
