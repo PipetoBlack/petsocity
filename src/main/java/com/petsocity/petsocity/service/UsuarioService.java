@@ -32,15 +32,18 @@ public class UsuarioService {
     // Crear
     public Usuario crearUsuario(Usuario usuario){
         if(usuario.getId() != null){
-            throw new RuntimeException("El ID debe ser nulo")
+            throw new RuntimeException("El ID debe ser nulo");
         }
         return usuarioRepository.save(usuario);
     }
 
     // actualizar
-    public Usuario actualizarUsuario(Long id Usuario datosActualizados){
+    public Usuario actualizarUsuario(Long id, Usuario datosActualizados){
         return usuarioRepository.findById(id).map(usuario ->{
-            usuario.setNombre(datosActualizados.getNombre());
+            usuario.setPrimerNombre(datosActualizados.getPrimerNombre());
+            usuario.setSegundoNombre(datosActualizados.getSegundoNombre());
+            usuario.setPrimerApellido(datosActualizados.getPrimerApellido());
+            usuario.setSegundoApellido(datosActualizados.getSegundoApellido());
             usuario.setEmail(datosActualizados.getEmail());
             usuario.setDireccion(datosActualizados.getDireccion());
             usuario.setRol(datosActualizados.getRol());
@@ -52,7 +55,4 @@ public class UsuarioService {
     public void eliminarUsuario(Long id){
         usuarioRepository.deleteById(id);
     }
-
-    
-    //borrar este comentari
 }
