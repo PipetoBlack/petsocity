@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.petsocity.petsocity.modelo.Usuario;
+import com.petsocity.petsocity.model.Usuario;
 import com.petsocity.petsocity.repository.UsuarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -38,6 +38,15 @@ public class UsuarioService {
     }
 
     // actualizar
+    public Usuario actualizarUsuario(Long id Usuario datosActualizados){
+        return usuarioRepository.findById(id).map(usuario ->{
+            usuario.setNombre(datosActualizados.getNombre());
+            usuario.setEmail(datosActualizados.getEmail());
+            usuario.setDireccion(datosActualizados.getDireccion());
+            usuario.setRol(datosActualizados.getRol());
+            return usuarioRepository.save(usuario);
+        }).orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
+    }
 
     // eliminar
     public void eliminarUsuario(Long id){
