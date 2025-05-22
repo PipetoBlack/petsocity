@@ -42,7 +42,10 @@ public class UsuarioService {
         return usuarioRepository.findById(id).map(usuario ->{
             usuario.setNombre(datosActualizados.getNombre());
             usuario.setEmail(datosActualizados.getEmail());
-        })
+            usuario.setDireccion(datosActualizados.getDireccion());
+            usuario.setRol(datosActualizados.getRol());
+            return usuarioRepository.save(usuario);
+        }).orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
     }
 
     // eliminar
