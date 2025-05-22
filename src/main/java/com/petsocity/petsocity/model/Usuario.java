@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "pnombre" ,nullable = false)
     private String primerNombre;
@@ -47,15 +47,8 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false)
-    private Rol rol = Rol.CLIENTE;
+    private Rol rol;
 
     @Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private LocalDateTime fechaCreacion;
-
-    public enum Rol {
-        CLIENTE,
-        ADMINISTRADOR,
-        TRABAJADOR
-    }
-
 }
