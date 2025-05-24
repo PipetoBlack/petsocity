@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.petsocity.petsocity.model.Carrito;
+import com.petsocity.petsocity.model.EstadoCarrito;
 import com.petsocity.petsocity.service.CarritoService;
 
 @RestController
