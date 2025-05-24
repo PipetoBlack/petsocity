@@ -63,6 +63,7 @@ public class CarritoService {
         return carritoRepository.findByEstado(estado);
     }
 
+    // Preguntar al alan que pasa con esto
     // Obtener carritos de un usuario con un estado específico
     public List<Carrito> obtenerPorUsuarioYEstado(Long usuarioId, EstadoCarrito estado) {
         return carritoRepository.findByUsuarioIdAndEstado(usuarioId, estado);

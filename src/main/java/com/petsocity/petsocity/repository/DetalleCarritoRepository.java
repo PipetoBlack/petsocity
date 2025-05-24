@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.petsocity.petsocity.model.DetalleCarrito;
 
 public interface DetalleCarritoRepository extends JpaRepository<DetalleCarrito,Long>{
-        //Traer por el id del usuario
+    /*    //Traer por el id del usuario
         List<DetalleCarrito>findByUsuarioId(long usuarioid);
 
             // Obtener todos los productos de un carrito
@@ -18,4 +18,5 @@ public interface DetalleCarritoRepository extends JpaRepository<DetalleCarrito,L
 
         // Buscar si un carrito ya contiene cierto producto
         DetalleCarrito findByCarritoIdAndInventarioId(Long carritoId, Long inventarioId);
+        */
 }

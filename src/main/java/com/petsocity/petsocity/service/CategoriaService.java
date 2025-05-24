@@ -28,8 +28,10 @@ public class CategoriaService {
     }
 
     public Categoria crearCategoria(Categoria categoria) {
-        if (categoriaRepository.existsByName(categoria.getNombre())) {
-            throw new RuntimeException("La categoría ya existe");
+        
+        List<Categoria> lcat = categoriaRepository.existsByName(categoria.getNombre());
+        if (lcat.size() > 1 ) {
+            return categoria;
         }
         return categoriaRepository.save(categoria);
     }

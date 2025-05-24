@@ -7,10 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.petsocity.petsocity.model.Inventario;
 
 public interface InventarioRepository extends JpaRepository<Inventario,Long>{
-    // Traer por nombre
+   /*  // Traer por nombre
     List<Inventario> findByName(String name);
 
     // conexion de categoria con los productos del inventario
     List<Inventario> findByCategoriaId(Long categoriaId);
-
+*/
+    // nuevo
+    List<Inventario> findByName(String nombreProducto);
+    List<Inventario> findByCategoriaId(Long categoria);
 }
