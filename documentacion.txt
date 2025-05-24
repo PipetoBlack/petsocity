@@ -51,3 +51,4 @@ Creacion archivo bdpetsocitiy
 
 PREGUNTAS:
 FN: desde vscode generamos las tablas? o nos conectamos a mysql con las tablas ya creadas? 
+debemos usar el .env para conectarlo a neontech?
