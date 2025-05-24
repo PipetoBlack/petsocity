@@ -17,7 +17,7 @@ import com.petsocity.petsocity.model.Inventario;
 import com.petsocity.petsocity.service.InventarioService;
 
 @RestController
-@RequestMapping("/petsocity/inventario")
+@RequestMapping("/api/v1/inventario")
 public class InventarioController {
     private final InventarioService inventarioService;
 

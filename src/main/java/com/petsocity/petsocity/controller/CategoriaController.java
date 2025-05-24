@@ -17,7 +17,7 @@ import com.petsocity.petsocity.service.CategoriaService;
 
 
 @RestController
-@RequestMapping("/petsocity/categorias")
+@RequestMapping("/api/v1/categorias")
 public class CategoriaController {
 private final CategoriaService categoriaService;
 
