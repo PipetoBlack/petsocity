@@ -57,4 +57,22 @@ public class CarritoController {
         return ResponseEntity.noContent().build();
     }
 
+    // Obtener todos los carritos de un usuario
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Carrito> obtenerPorUsuario(@PathVariable Long usuarioId) {
+        return carritoService.obtenerPorUsuarioId(usuarioId);
+    }
+
+    // Obtener todos los carritos con un estado específico
+    @GetMapping("/estado/{estado}")
+    public List<Carrito> obtenerPorEstado(@PathVariable EstadoCarrito estado) {
+        return carritoService.obtenerPorEstado(estado);
+    }
+
+    // Obtener carritos de un usuario con un estado específico
+    @GetMapping("/usuario/{usuarioId}/estado/{estado}")
+    public List<Carrito> obtenerPorUsuarioYEstado(@PathVariable Long usuarioId, @PathVariable EstadoCarrito estado) {
+        return carritoService.obtenerPorUsuarioYEstado(usuarioId, estado);
+    }
+
 }

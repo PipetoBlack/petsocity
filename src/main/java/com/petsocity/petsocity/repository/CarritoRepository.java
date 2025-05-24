@@ -7,7 +7,7 @@ import com.petsocity.petsocity.model.Carrito;
 import com.petsocity.petsocity.model.EstadoCarrito;
 
 public interface CarritoRepository extends JpaRepository<Carrito,Long>{
-    // Carritos asociados al usuario
+    // Trae los carritos asociados al usuario
     List<Carrito> findByUsuarioId(Long usuarioId);
 
     // Trae los carritos de acuerdo al estado
@@ -15,5 +15,4 @@ public interface CarritoRepository extends JpaRepository<Carrito,Long>{
 
     // Trae los carritos de acuerdo al id del usuario, y al estado
     List<Carrito> findByUsuarioIdAndEstado(Long usuarioId, EstadoCarrito estado);
-
 }
