@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/petsocity/detalleCarrito")
+@RequestMapping("/api/v1/detalleCarrito")
 public class DetalleCarritoController {
     private final DetalleCarritoService detalleCarritoService;
 
