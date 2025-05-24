@@ -51,3 +51,6 @@ Creacion archivo bdpetsocitiy
 
 PREGUNTAS:
 FN: desde vscode generamos las tablas? o nos conectamos a mysql con las tablas ya creadas? 
+
+
+Alexis: creacion de metodos y cambios en seccion de DETALLECARRITO, y correcion de errores en ellos. Tambien se comento en ellas para saber su uso
