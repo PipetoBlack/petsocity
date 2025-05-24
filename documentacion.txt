@@ -59,6 +59,9 @@ Alexis: creacion de metodos y cambios en seccion de DETALLECARRITO, y correcion 
 -> Nombre de sugerencia: http://localhost:8082/api/v1/usuario
 -> nombre actual http://localhost:8082/petsocity/usuario
 
+-> Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.
+- ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
+
 #########################
 CONFIGURACION MYSQL
 - Se debe iniciar MySQL connections con el localhost por defecto, usuario root pass root
