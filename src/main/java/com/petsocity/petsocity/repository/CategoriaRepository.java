@@ -1,10 +1,13 @@
 package com.petsocity.petsocity.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.petsocity.petsocity.model.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria,Long>{
-    boolean existsByName(String nombre);
-
+   @Query("SELECT c FROM categorias c WHERE c.nombre LIKE '%:nombre%'")
+   List<Categoria> existsByName(String nombre);
 }
