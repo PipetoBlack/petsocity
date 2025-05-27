@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.petsocity.petsocity.model.Categoria;
 import com.petsocity.petsocity.model.Inventario;
+import com.petsocity.petsocity.repository.CategoriaRepository;
 import com.petsocity.petsocity.repository.InventarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -14,11 +16,14 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class InventarioService {
     private final InventarioRepository inventarioRepository;
+    private final CategoriaRepository categoriaRepository;
 
-    public InventarioService(InventarioRepository inventarioRepository){
+    public InventarioService(InventarioRepository inventarioRepository, CategoriaRepository categoriaRepository){
         this.inventarioRepository = inventarioRepository;
+        this.categoriaRepository = categoriaRepository;
     }
-    
+
+
     //obtener todos
     public List<Inventario> obtenerTodos(){
         return inventarioRepository.findAll();
@@ -35,16 +40,14 @@ public class InventarioService {
     }
 
     // Obtener todos los productos de una categoría específica
-    public List<Inventario> obtenerPorCategoria(Long categoriaId) {
-        return inventarioRepository.findByCategoriaId(categoriaId);
+    public List<Inventario> obtenerCategoriaId(Long id) {
+        return categoriaRepository.findAllById(id);
     }
-
-
 
     // Crear
     public Inventario crearInventario(Inventario inventario){
-        if(inventario.getId() != null){
-            throw new RuntimeException("El ID debe ser nulo");
+        if(inventarioRepository.existsById(inventario.getId()) == true){
+            return inventario;
         }
         return inventarioRepository.save(inventario);
     }
@@ -64,9 +67,6 @@ public class InventarioService {
 
     // eliminar con validacion por si no existe la id
     public void eliminarInventario(Long id) {
-        if (!inventarioRepository.existsById(id)) {
-            throw new RuntimeException("El inventario con ID " + id + " no existe.");
-        }
         inventarioRepository.deleteById(id);
     }
 
