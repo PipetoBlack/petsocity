@@ -1,12 +1,8 @@
 package com.petsocity.petsocity.controller;
 
-
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.petsocity.petsocity.model.Carrito;
 import com.petsocity.petsocity.model.DetalleCarrito;
 import com.petsocity.petsocity.model.EstadoCarrito;
@@ -22,7 +18,7 @@ public class CarritoController {
         this.carritoService = carritoService;
     }
 
-    // ---------------------- Métodos de Carrito ---------------------- //
+    // Metodos de Carrito
     @GetMapping
     public List<Carrito> obtenerTodosCarritos() {
         return carritoService.obtenerTodosCarritos();
@@ -66,7 +62,7 @@ public class CarritoController {
         return carritoService.obtenerPorUsuarioYEstado(usuarioId, estado);
     }
 
-    // ---------------------- Métodos de Usuario ---------------------- //
+    // Metodos de Usuario
     @GetMapping("/usuarios")
     public List<Usuario> obtenerTodosUsuarios() {
         return carritoService.obtenerTodosUsuarios();
@@ -95,7 +91,7 @@ public class CarritoController {
         return ResponseEntity.noContent().build();
     }
 
-    // ---------------------- Métodos de DetalleCarrito ---------------------- //
+    // Metodos de DetalleCarrito
     @GetMapping("/detalles")
     public List<DetalleCarrito> obtenerTodosDetalles() {
         return carritoService.obtenerTodosDetalles();
