@@ -3,6 +3,8 @@ package com.petsocity.petsocity.service;
 import com.petsocity.petsocity.model.Carrito;
 import com.petsocity.petsocity.model.EstadoCarrito;
 import com.petsocity.petsocity.repository.CarritoRepository;
+import com.petsocity.petsocity.repository.DetalleCarritoRepository;
+import com.petsocity.petsocity.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,10 @@ public class CarritoService {
 
     @Autowired
     private CarritoRepository carritoRepository;
+    @Autowired
+    private DetalleCarritoRepository detalleCarritoRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     // Obtener todos los carritos registrados
     public List<Carrito> obtenerTodos() {

@@ -39,8 +39,6 @@ public class InventarioService {
         return inventarioRepository.findByCategoriaId(categoriaId);
     }
 
-
-
     // Crear
     public Inventario crearInventario(Inventario inventario){
         if(inventario.getId() != null){

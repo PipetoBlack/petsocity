@@ -14,6 +14,7 @@ public interface InventarioRepository extends JpaRepository<Inventario,Long>{
     List<Inventario> findByCategoriaId(Long categoriaId);
 */
     // nuevo
+    
     List<Inventario> findByName(String nombreProducto);
     List<Inventario> findByCategoriaId(Long categoria);
 }
