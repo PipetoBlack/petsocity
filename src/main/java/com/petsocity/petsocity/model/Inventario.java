@@ -37,6 +37,8 @@ public class Inventario {
     @Column(name = "stock_actual", nullable = false)
     private Integer stockActual;
     
+    // Una clave foránea llamada categoria_id en la base de datos.
+    // Una relación de objeto entre Inventario y Categoria.
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;

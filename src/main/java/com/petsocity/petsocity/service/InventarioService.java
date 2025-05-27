@@ -3,6 +3,7 @@ package com.petsocity.petsocity.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petsocity.petsocity.model.Categoria;
@@ -15,8 +16,11 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class InventarioService {
-    private final InventarioRepository inventarioRepository;
-    private final CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private InventarioRepository inventarioRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public InventarioService(InventarioRepository inventarioRepository, CategoriaRepository categoriaRepository){
         this.inventarioRepository = inventarioRepository;
@@ -36,13 +40,13 @@ public class InventarioService {
 
     // Obtener por nombre
     public List<Inventario> buscarPorNombre(String nombre) {
-    return inventarioRepository.findByName(nombre);
+    return inventarioRepository.findByNombreProducto(nombre);
     }
 
-    // Obtener todos los productos de una categoría específica
-    public List<Inventario> obtenerCategoriaId(Long id) {
-        return categoriaRepository.findAllById(id);
+    public List<Inventario> obtenerPorCategoriaId(Long id) {
+        return inventarioRepository.buscarPorCategoriaId(id);
     }
+
 
     // Crear
     public Inventario crearInventario(Inventario inventario){

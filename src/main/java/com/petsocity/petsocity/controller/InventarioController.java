@@ -51,7 +51,7 @@ public class InventarioController {
     // Buscar por categoria
     @GetMapping("/categoria/{categoriaId}")
     public List<Inventario> obtenerPorCategoria(@PathVariable Long categoriaId) {
-        return inventarioService.obtenerPorCategoria(categoriaId);
+        return inventarioService.obtenerPorCategoriaId(categoriaId);
     }
 
 
