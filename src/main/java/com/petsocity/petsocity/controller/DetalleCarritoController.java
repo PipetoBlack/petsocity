@@ -40,13 +40,13 @@ public class DetalleCarritoController {
     // Actualizar
     @PutMapping("/{id}")
     public ResponseEntity<DetalleCarrito> actualizar(@PathVariable Long id, @RequestBody DetalleCarrito detalle) {
-        return ResponseEntity.ok(detalleCarritoService.actualizardDetalleCarrito(id, detalle));
+        return ResponseEntity.ok(detalleCarritoService.actualizarDetalleCarrito(id, detalle));
     }
 
     // Eliminar 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        detalleCarritoService.eliminarDetalleCompra(id);
+        detalleCarritoService.eliminarDetalleCarrito(id);
         return ResponseEntity.noContent().build();
     }
 }

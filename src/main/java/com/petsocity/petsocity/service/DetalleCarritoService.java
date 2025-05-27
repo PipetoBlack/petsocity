@@ -35,13 +35,14 @@ public class DetalleCarritoService {
     }
     //creacion de detalle del carro
     public DetalleCarrito crearDetalleCarrito(DetalleCarrito detalleCarrito){
-        if(detalleCarrito.getId()!=null){
-            throw new RuntimeException("EL ID DEBE SER NULO");
+        List<DetalleCarrito> lcat = detalleCarritoRepository.existsById(detalleCarrito.getId());
+        if (lcat.size() > 1 ) {
+            return detalleCarrito;
         }
         return detalleCarritoRepository.save(detalleCarrito);
     }
     //Actualizar
-    public DetalleCarrito actualizardDetalleCarrito(long id, DetalleCarrito datosActualizados){
+    public DetalleCarrito actualizarDetalleCarrito(long id, DetalleCarrito datosActualizados){
         return detalleCarritoRepository.findById(id).map(detalleCarrito->{
             detalleCarrito.setCantidad(datosActualizados.getCantidad());
             detalleCarrito.setCarrito(datosActualizados.getCarrito());
@@ -51,12 +52,9 @@ public class DetalleCarritoService {
 
         }).orElseThrow(()->new RuntimeException("detalle no encontrado"));
     }
-
-
-
 //------------------------------------------------------------------------
     // eliminar detalledecompra (No creo que sea necesario)
-    public void eliminarDetalleCompra(Long id){
+    public void eliminarDetalleCarrito(Long id){
         detalleCarritoRepository.deleteById(id);
     }
 //------------------------------------------------------------------------

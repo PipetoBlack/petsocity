@@ -1,22 +1,30 @@
 package com.petsocity.petsocity.repository;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
 import com.petsocity.petsocity.model.DetalleCarrito;
 
-public interface DetalleCarritoRepository extends JpaRepository<DetalleCarrito,Long>{
-    /*    //Traer por el id del usuario
-        List<DetalleCarrito>findByUsuarioId(long usuarioid);
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-            // Obtener todos los productos de un carrito
-        List<DetalleCarrito> findByCarritoId(Long carritoId);
+@Repository
+public interface DetalleCarritoRepository extends JpaRepository<DetalleCarrito, Long> {
 
-        // Buscar todos los carritos que contienen un producto específico
-        List<DetalleCarrito> findByInventarioId(Long inventarioId);
+    // Obtener todos los productos de un carrito específico
+    @Query("SELECT d FROM DetalleCarrito d WHERE d.carrito.id = :carritoId")
+    List<DetalleCarrito> buscarPorCarritoId(@Param("carritoId") Long carritoId);
 
-        // Buscar si un carrito ya contiene cierto producto
-        DetalleCarrito findByCarritoIdAndInventarioId(Long carritoId, Long inventarioId);
-        */
+    // Obtener todos los registros que contienen un producto específico en cualquier carrito
+    @Query("SELECT d FROM DetalleCarrito d WHERE d.inventario.id = :inventarioId")
+    List<DetalleCarrito> buscarPorInventarioId(@Param("inventarioId") Long inventarioId);
+
+    // Verificar si un producto ya está en un carrito específico
+    @Query("SELECT d FROM DetalleCarrito d WHERE d.carrito.id = :carritoId AND d.inventario.id = :inventarioId")
+    Optional<DetalleCarrito> buscarPorCarritoIdEInventarioId(
+        @Param("carritoId") Long carritoId,
+        @Param("inventarioId") Long inventarioId
+    );
 }
