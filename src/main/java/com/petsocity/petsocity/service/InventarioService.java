@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petsocity.petsocity.model.Categoria;
 import com.petsocity.petsocity.model.Inventario;
-import com.petsocity.petsocity.repository.CategoriaRepository;
 import com.petsocity.petsocity.repository.InventarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -19,12 +17,9 @@ public class InventarioService {
 
     @Autowired
     private InventarioRepository inventarioRepository;
-    @Autowired
-    private CategoriaRepository categoriaRepository;
 
-    public InventarioService(InventarioRepository inventarioRepository, CategoriaRepository categoriaRepository){
+    public InventarioService(InventarioRepository inventarioRepository){
         this.inventarioRepository = inventarioRepository;
-        this.categoriaRepository = categoriaRepository;
     }
 
 
