@@ -1,4 +1,4 @@
-package com.petsocity.petsocity.service;
+/* package com.petsocity.petsocity.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,3 +56,4 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 }
+*/
