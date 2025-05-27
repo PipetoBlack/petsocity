@@ -41,7 +41,7 @@ public class DetalleCarritoService {
         return detalleCarritoRepository.save(detalleCarrito);
     }
     //Actualizar
-    public DetalleCarrito actualizardDetalleCarrito(long id, DetalleCarrito datosActualizados){
+    public DetalleCarrito actualizarDetalleCarrito(long id, DetalleCarrito datosActualizados){
         return detalleCarritoRepository.findById(id).map(detalleCarrito->{
             detalleCarrito.setCantidad(datosActualizados.getCantidad());
             detalleCarrito.setCarrito(datosActualizados.getCarrito());
@@ -56,7 +56,7 @@ public class DetalleCarritoService {
 
 //------------------------------------------------------------------------
     // eliminar detalledecompra (No creo que sea necesario)
-    public void eliminarDetalleCompra(Long id){
+    public void eliminarDetalleCarrito(Long id){
         detalleCarritoRepository.deleteById(id);
     }
 //------------------------------------------------------------------------

@@ -18,7 +18,7 @@ import com.petsocity.petsocity.model.EstadoCarrito;
 import com.petsocity.petsocity.service.CarritoService;
 
 @RestController
-@RequestMapping("/petsocity/carrito")
+@RequestMapping("/api/v1/carrito")
 
 public class CarritoController {
     private final CarritoService carritoService;
