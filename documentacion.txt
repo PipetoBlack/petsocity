@@ -62,8 +62,13 @@ Alexis: creacion de metodos y cambios en seccion de DETALLECARRITO, y correcion 
 -> Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.
 - ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
 
+-> Ultimas actualizaciones: Despues de una gran batalla con la unificacion de ciertas clases con entidad relacional, pudimos dar con exito el levantamiento el servidor 
+para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con exito!!
+
 #########################
 CONFIGURACION MYSQL
 - Se debe iniciar MySQL connections con el localhost por defecto, usuario root pass root
 - Se crea DATABASE "bdpetsocity" en donde se almacenaran las tablas y sus datos.
 - Esta bd ya cuenta con todo los privilegios necesarios para hacer consultas y utilizar metodos CRUD
+##########################
+PRUEBAS CON POSTMAN
