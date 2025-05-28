@@ -1,6 +1,8 @@
 package com.petsocity.petsocity.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,8 +54,10 @@ public class UsuarioController {
 
     // eliminar
     @DeleteMapping("/usuario/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
-        return ResponseEntity.noContent().build();
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Usuario eliminado correctamente");
+        return ResponseEntity.ok(response);
     }
 }
