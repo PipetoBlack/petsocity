@@ -2,17 +2,17 @@ package com.petsocity.petsocity.service;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.petsocity.petsocity.model.Categoria;
 import com.petsocity.petsocity.repository.CategoriaRepository;
-
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 public class CategoriaService {
+
+    @Autowired
     private final CategoriaRepository categoriaRepository;
 
     public CategoriaService(CategoriaRepository categoriaRepository) {

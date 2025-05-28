@@ -19,6 +19,7 @@ import com.petsocity.petsocity.service.InventarioService;
 @RestController
 @RequestMapping("/api/v1/inventario")
 public class InventarioController {
+
     private final InventarioService inventarioService;
 
     public InventarioController(InventarioService inventarioService){
@@ -26,7 +27,7 @@ public class InventarioController {
     }
 
     // Leer todo
-    @GetMapping
+    @GetMapping("/listainventario")
     public List<Inventario> obtenerTodos(){
         return inventarioService.obtenerTodos();
     }
@@ -53,7 +54,6 @@ public class InventarioController {
     public List<Inventario> obtenerPorCategoria(@PathVariable Long categoriaId) {
         return inventarioService.obtenerPorCategoriaId(categoriaId);
     }
-
 
     // Crear
     @PostMapping("")

@@ -25,11 +25,13 @@ private final CategoriaService categoriaService;
         this.categoriaService = categoriaService;
     }
 
-    @GetMapping
+    // Leer todo
+    @GetMapping("/listacategoria")
     public List<Categoria> listarCategorias() {
         return categoriaService.obtenerTodas();
     }
 
+    // Leer por id
     @GetMapping("/categoria/{id}")
     public ResponseEntity<Categoria> obtenerPorId(@PathVariable Long id) {
         return categoriaService.obtenerPorId(id)
@@ -37,16 +39,19 @@ private final CategoriaService categoriaService;
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // crear
     @PostMapping
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
         return categoriaService.crearCategoria(categoria);
     }
 
+    // actualizar
     @PutMapping("/{id}")
     public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
         return categoriaService.actualizarCategoria(id, categoria);
     }
 
+    // eliminar
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
         categoriaService.eliminarCategoria(id);

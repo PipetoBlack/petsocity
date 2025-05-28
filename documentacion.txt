@@ -1,6 +1,6 @@
 Se realiza el proyecto con la siguiente configuracion de Springboot:
 - Se utiliza Gradle - Groovy
-- Lenguaje JAVA --version 24
+- Lenguaje JAVA --version 24 2025-03-18
 - Version SpringBoot 3.4.5
 - Packaing: JAR
 
