@@ -1,6 +1,8 @@
 package com.petsocity.petsocity.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,12 +35,12 @@ private final CategoriaService categoriaService;
 
     // Leer por id
     @GetMapping("/categoria/{id}")
-    public ResponseEntity<Categoria> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Categoria> obtenerPorId(@PathVariable("id") Long id) {
         return categoriaService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
+    
     // crear
     @PostMapping("/categoria")
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
@@ -47,14 +49,22 @@ private final CategoriaService categoriaService;
 
     // actualizar
     @PutMapping("/{id}")
-    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+    public Categoria actualizarCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
         return categoriaService.actualizarCategoria(id, categoria);
     }
 
+
     // eliminar
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> eliminarCategoria(@PathVariable("id") Long id) {
         categoriaService.eliminarCategoria(id);
-        return ResponseEntity.noContent().build();
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Categoria eliminado correctamente");
+        return ResponseEntity.ok(response);
     }
+
+    /*¿Qué hace?
+    Llama al servicio para eliminar la categoría con el id que llega en la URL.
+    Luego crea un Map con un mensaje personalizado.
+    Devuelve ese mensaje como respuesta (en formato JSON) al cliente.*/
 }
