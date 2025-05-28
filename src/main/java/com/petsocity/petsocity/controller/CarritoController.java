@@ -69,7 +69,7 @@ public class CarritoController {
     }
 
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
+    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return carritoService.obtenerPorIdUsuario(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

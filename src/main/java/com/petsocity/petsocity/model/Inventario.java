@@ -2,6 +2,8 @@ package com.petsocity.petsocity.model;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Inventario")
+@Table(name = "inventario")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,7 +45,6 @@ public class Inventario {
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
-    @Column(name = "fecha_creacion", nullable = false)
-    private Timestamp fechaCreacion;
-
+    @Column(name = "fecha_creacion", updatable = false, insertable = false)
+    private LocalDateTime fechaCreacion;
 }

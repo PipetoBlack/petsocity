@@ -1,6 +1,8 @@
 package com.petsocity.petsocity.model;
 
 import java.security.Timestamp;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,7 +18,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Carrito_compras")
+@Table(name = "carrito_compras")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,6 +35,6 @@ public class Carrito {
     @Column(name = "estado", nullable = false)
     private EstadoCarrito estado;
      
-    @Column(name = "fecha_creacion", nullable = false)
-    private Timestamp fechaCreacion;
+    @Column(name = "fecha_creacion", updatable = false, insertable = false)
+    private LocalDateTime fechaCreacion;
 }

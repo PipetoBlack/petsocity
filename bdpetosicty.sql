@@ -1,13 +1,12 @@
 CREATE TABLE usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    pnombre VARCHAR(100) NOT NULL,
-	snombre VARCHAR(100) NOT NULL,
-	papellido VARCHAR(100) NOT NULL,
-	sapellido VARCHAR(100) NOT NULL,
+    primer_nombre VARCHAR(100) NOT NULL,
+	segundo_nombre VARCHAR(100) NOT NULL,
+	primer_apellido VARCHAR(100) NOT NULL,
+	segundo_apellido VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     contrasenia VARCHAR(255) NOT NULL,
     direccion TEXT NOT NULL,
-    rol ENUM('cliente', 'administrador', 'trabajador') NOT NULL DEFAULT 'cliente',
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -30,7 +29,7 @@ CREATE TABLE inventario (
 CREATE TABLE carrito_compras (
     id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
-    estado ENUM('activo', 'finalizado') NOT NULL DEFAULT 'activo',
+    estado ENUM('ACTIVO', 'FINALIZADO') NOT NULL DEFAULT 'ACTIVO',
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );

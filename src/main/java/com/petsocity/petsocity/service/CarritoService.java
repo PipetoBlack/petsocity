@@ -125,7 +125,6 @@ public class CarritoService {
             usuario.setSegundoApellido(datosActualizados.getSegundoApellido());
             usuario.setEmail(datosActualizados.getEmail());
             usuario.setDireccion(datosActualizados.getDireccion());
-            usuario.setRol(datosActualizados.getRol());
             return usuarioRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
