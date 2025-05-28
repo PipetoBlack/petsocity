@@ -47,16 +47,25 @@ public class InventarioService {
     }
     
     // actualiza todos los campos del inventario producto
-    public Inventario actualizarInventario(Long id, Inventario datosActualizados){
-        return inventarioRepository.findById(id).map(inventario ->{
+    public Inventario actualizarInventario(Long id, Inventario datosActualizados) {
+        return inventarioRepository.findById(id).map(inventario -> {
+            if (datosActualizados.getNombreProducto() != null) {
             inventario.setNombreProducto(datosActualizados.getNombreProducto());
+            }
             inventario.setDescripcion(datosActualizados.getDescripcion());
-            inventario.setPrecio(datosActualizados.getPrecio());
-            inventario.setStockActual(datosActualizados.getStockActual());
-            inventario.setCategoria(datosActualizados.getCategoria());
-            inventario.setFechaCreacion(datosActualizados.getFechaCreacion());
+            if (datosActualizados.getDescripcion() != null) {
+            }
+            if (datosActualizados.getPrecio() != null) {
+                inventario.setPrecio(datosActualizados.getPrecio());
+            }
+            if (datosActualizados.getStockActual() != null) {
+                inventario.setStockActual(datosActualizados.getStockActual());
+            }
+            if (datosActualizados.getCategoria() != null) {
+                inventario.setCategoria(datosActualizados.getCategoria());
+            }
             return inventarioRepository.save(inventario);
-        }).orElseThrow(()-> new RuntimeException("Inventario no encontrado"));
+        }).orElseThrow(() -> new RuntimeException("Inventario no encontrado"));
     }
 
     // eliminar con validacion por si no existe la id

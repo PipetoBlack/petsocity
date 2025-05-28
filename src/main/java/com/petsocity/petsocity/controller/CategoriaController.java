@@ -40,7 +40,7 @@ private final CategoriaService categoriaService;
     }
 
     // crear
-    @PostMapping
+    @PostMapping("/categoria")
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
         return categoriaService.crearCategoria(categoria);
     }

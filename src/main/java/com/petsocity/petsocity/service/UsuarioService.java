@@ -36,12 +36,27 @@ public class UsuarioService {
 
     public Usuario actualizarUsuario(Long id, Usuario datosActualizados) {
         return usuarioRepository.findById(id).map(usuario -> {
-            usuario.setPrimerNombre(datosActualizados.getPrimerNombre());
-            usuario.setSegundoNombre(datosActualizados.getSegundoNombre());
-            usuario.setPrimerApellido(datosActualizados.getPrimerApellido());
-            usuario.setSegundoApellido(datosActualizados.getSegundoApellido());
-            usuario.setEmail(datosActualizados.getEmail());
-            usuario.setDireccion(datosActualizados.getDireccion());
+            if (datosActualizados.getPrimerNombre() != null) {
+                usuario.setPrimerNombre(datosActualizados.getPrimerNombre());
+            }
+            if (datosActualizados.getSegundoNombre() != null) {
+                usuario.setSegundoNombre(datosActualizados.getSegundoNombre());
+            }
+            if (datosActualizados.getPrimerApellido() != null) {
+                usuario.setPrimerApellido(datosActualizados.getPrimerApellido());
+            }
+            if (datosActualizados.getSegundoApellido() != null) {
+                usuario.setSegundoApellido(datosActualizados.getSegundoApellido());
+            }
+            if (datosActualizados.getEmail() != null) {
+                usuario.setEmail(datosActualizados.getEmail());
+            }
+            if (datosActualizados.getDireccion() != null) {
+                usuario.setDireccion(datosActualizados.getDireccion());
+            }
+            if (datosActualizados.getContrasenia() != null){
+                usuario.setContrasenia(datosActualizados.getContrasenia());
+            }
             return usuarioRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }

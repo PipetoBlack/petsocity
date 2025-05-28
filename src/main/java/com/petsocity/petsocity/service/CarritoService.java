@@ -32,13 +32,13 @@ public class CarritoService {
         return carritoRepository.save(carrito);
     }
 
-    public Carrito actualizarCarrito(Long id, Carrito nuevoCarrito){
+    public Carrito actualizarCarrito(Long id, Carrito nuevoCarrito) {
         return carritoRepository.findById(id).map(carrito -> {
-            carrito.setEstado(nuevoCarrito.getEstado());
-            carrito.setUsuario(nuevoCarrito.getUsuario());
-            carrito.setFechaCreacion(nuevoCarrito.getFechaCreacion());
+            if (nuevoCarrito.getEstado() != null) {
+                carrito.setEstado(nuevoCarrito.getEstado());
+            }
             return carritoRepository.save(carrito);
-        }).orElseThrow(()-> new RuntimeException("Carrito no encontrado"));
+        }).orElseThrow(() -> new RuntimeException("Carrito no encontrado"));
     }
 
     public void eliminarCarrito(Long id){

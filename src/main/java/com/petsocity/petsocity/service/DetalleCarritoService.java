@@ -34,12 +34,21 @@ public class DetalleCarritoService {
         return detalleCarritoRepository.save(detalleCarrito);
     }
 
+    // PREGUNTAR AL PROFESOOOOOR 
     public DetalleCarrito actualizarDetalleCarrito(long id, DetalleCarrito datosActualizados) {
         return detalleCarritoRepository.findById(id).map(detalleCarrito -> {
-            detalleCarrito.setCantidad(datosActualizados.getCantidad());
-            detalleCarrito.setCarrito(datosActualizados.getCarrito());
-            detalleCarrito.setInventario(datosActualizados.getInventario());
-            detalleCarrito.setPrecioUnitario(datosActualizados.getPrecioUnitario());
+            if (datosActualizados.getCantidad() != null) {
+                detalleCarrito.setCantidad(datosActualizados.getCantidad());
+            }
+            if (datosActualizados.getCarrito() != null) {
+                detalleCarrito.setCarrito(datosActualizados.getCarrito());
+            }
+            if (datosActualizados.getInventario() != null) {
+                detalleCarrito.setInventario(datosActualizados.getInventario());
+            }
+            if (datosActualizados.getPrecioUnitario() != null) {
+                detalleCarrito.setPrecioUnitario(datosActualizados.getPrecioUnitario());
+            }
             return detalleCarritoRepository.save(detalleCarrito);
         }).orElseThrow(() -> new RuntimeException("Detalle no encontrado"));
     }

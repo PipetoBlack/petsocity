@@ -8,7 +8,7 @@ import com.petsocity.petsocity.model.EstadoCarrito;
 import com.petsocity.petsocity.service.CarritoService;
 
 @RestController
-@RequestMapping("/api/v1/carrito")
+@RequestMapping("/api/v1/carritos")
 public class CarritoController {
 
     private final CarritoService carritoService;
@@ -32,7 +32,7 @@ public class CarritoController {
     }
 
     // crear
-    @PostMapping
+    @PostMapping("/carrito")
     public ResponseEntity<Carrito> crearCarrito(@RequestBody Carrito carrito) {
         return ResponseEntity.ok(carritoService.crearCarrito(carrito));
     }
