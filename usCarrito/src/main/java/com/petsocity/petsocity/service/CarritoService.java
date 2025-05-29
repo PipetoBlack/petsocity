@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.petsocity.petsocity.model.Carrito;
 import com.petsocity.petsocity.model.EstadoCarrito;
 import com.petsocity.petsocity.repository.CarritoRepository;
@@ -12,14 +13,13 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class CarritoService {
-    
     @Autowired
     private final CarritoRepository carritoRepository;
-    
+
     public CarritoService(CarritoRepository carritoRepository) {
         this.carritoRepository = carritoRepository;
-    }
 
+    }
     public List<Carrito> obtenerTodosCarritos(){
         return carritoRepository.findAll();
     }
