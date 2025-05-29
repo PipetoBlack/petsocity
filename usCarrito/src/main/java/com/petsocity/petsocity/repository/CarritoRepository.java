@@ -14,7 +14,7 @@ import java.util.List;
 public interface CarritoRepository extends JpaRepository<Carrito, Long> {
 
     // Buscar todos los carritos por ID de usuario
-    @Query("SELECT c FROM Carrito c WHERE c.usuario.id = :usuarioId")
+    @Query("SELECT c FROM Carrito c WHERE c.usuarioid = :usuarioId")
     List<Carrito> buscarPorUsuarioId(@Param("usuarioId") Long usuarioId);
 
     // Buscar carritos por estado
@@ -22,7 +22,7 @@ public interface CarritoRepository extends JpaRepository<Carrito, Long> {
     List<Carrito> buscarPorEstado(@Param("estado") EstadoCarrito estado);
 
     // Buscar carritos por usuario y estado
-    @Query("SELECT c FROM Carrito c WHERE c.usuario.id = :usuarioId AND c.estado = :estado")
+    @Query("SELECT c FROM Carrito c WHERE c.usuarioid = :usuarioId AND c.estado = :estado")
     List<Carrito> buscarPorUsuarioYEstado(
         @Param("usuarioId") Long usuarioId,
         @Param("estado") EstadoCarrito estado
