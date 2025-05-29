@@ -32,14 +32,14 @@ Dependencias al momento de generar el springboot:
 
 
 ---------------------------------------------------------------------------------------------------------
-CONFIGURACION MYSQL
+## CONFIGURACION MYSQL
 - Se debe iniciar MySQL connections con el localhost por defecto
 	*user root
 	*pass root
 - Se crea DATABASE "bdpetsocity" en donde se almacenaran las tablas y sus datos.
 - Esta bd ya cuenta con todo los privilegios necesarios para hacer consultas y utilizar metodos CRUD
 --------------------------------------------------------------------------------------------------------
-PRUEBAS CON POSTMAN
+## PRUEBAS CON POSTMAN
 
 - Se añade el puerto de enlace 8088,8089 y 8087 para comenzar a hacer pruebas en Postman
 asi con sus respectivas pruebas
@@ -49,8 +49,7 @@ Link para acceso de postman
 
 https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
 ------------------------------------------------------
-
-- VANIA
+## VANIA
 
 Creacion de carpetas
 - controller
@@ -78,7 +77,7 @@ Configuracion de archivo application.propierties
 
 ----------------------------------------------------------------------------------------
 
-ALAN
+## ALAN
 
 Solución de conflicto en código
 Creación de rama + Creación de métodos en carrito.
@@ -87,7 +86,7 @@ Se completa el informe.
 
 ---------------------------------------------------------------------------------------
 
-ALEXIS
+## ALEXIS
 
 Creación de Rama + creación de métodos y cambios en sección de DETALLECARRITO, y corrección de errores en ellos. También se comento en ellas para saber su uso
 Mejora en Detalle Carrito ya que unos de los métodos estaba mal escrito.
@@ -95,7 +94,7 @@ Se completa la documentación para un mejor entendimiento de lo que se hizo dura
 
 -------------------------------------------------------------------------------
 
-FELIPE
+## FELIPE
 
 Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
 
