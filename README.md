@@ -50,7 +50,7 @@ Link para acceso de postman
 https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
 ------------------------------------------------------
 
-VANIA
+- VANIA
 
 Creacion de carpetas
 - controller
@@ -79,6 +79,7 @@ Configuracion de archivo application.propierties
 ----------------------------------------------------------------------------------------
 
 ALAN
+
 Solución de conflicto en código
 Creación de rama + Creación de métodos en carrito.
 También se realizo modificaciones en detalle carrito, se modifico nombres mal escritos y se realizan querys para este, también se optimiza código en carritoRepository
