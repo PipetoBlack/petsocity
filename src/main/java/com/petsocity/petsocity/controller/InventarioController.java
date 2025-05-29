@@ -1,6 +1,8 @@
 package com.petsocity.petsocity.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ import com.petsocity.petsocity.model.Inventario;
 import com.petsocity.petsocity.service.InventarioService;
 
 @RestController
-@RequestMapping("/api/v1/inventario")
+@RequestMapping("/api/v1/inventarios")
 public class InventarioController {
 
     private final InventarioService inventarioService;
@@ -27,20 +29,20 @@ public class InventarioController {
     }
 
     // Leer todo
-    @GetMapping("/listainventario")
+    @GetMapping("")
     public List<Inventario> obtenerTodos(){
         return inventarioService.obtenerTodos();
     }
 
     // leer por id obtenerPorId(id)
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<Inventario> obtenerPorId(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Inventario> obtenerPorId(@PathVariable("id") Long id){
         Optional<Inventario> inventario = inventarioService.obtenerPorId(id);
         return inventario.map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
     }
 
     // Buscar por nombre
-    @GetMapping("/buscar/nombre/{nombre}")
+    @GetMapping("/nombre/{nombre}")
     public ResponseEntity<List<Inventario>> buscarPorNombre(@PathVariable String nombre){
         List<Inventario> resultados = inventarioService.buscarPorNombre(nombre);
         if (resultados.isEmpty()) {
@@ -50,8 +52,8 @@ public class InventarioController {
     }
 
     // Buscar por categoria
-    @GetMapping("/categoria/{categoriaId}")
-    public List<Inventario> obtenerPorCategoria(@PathVariable Long categoriaId) {
+    @GetMapping("/categoria/{id}")
+    public List<Inventario> obtenerPorCategoria(@PathVariable("id") Long categoriaId) {
         return inventarioService.obtenerPorCategoriaId(categoriaId);
     }
 
@@ -63,15 +65,17 @@ public class InventarioController {
     
     // Actualizar
     @PutMapping("/{id}")
-    public ResponseEntity<Inventario> actualizarInventario(@PathVariable Long id, @RequestBody Inventario inventario){
+    public ResponseEntity<Inventario> actualizarInventario(@PathVariable("id") Long id, @RequestBody Inventario inventario){
         return ResponseEntity.ok(inventarioService.actualizarInventario(id, inventario));
     }
 
+
     // Eliminar
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarProductoInventario(@PathVariable Long id){
+    public ResponseEntity<Map<String, String>> eliminarProductoInventario(@PathVariable("id") Long id){
+        Map<String, String> response = new HashMap<>();
         inventarioService.eliminarInventario(id);
-        return ResponseEntity.noContent().build();
+        response.put("mensaje", "Categoria eliminado correctamente");
+        return ResponseEntity.ok(response);
     }
-
 }

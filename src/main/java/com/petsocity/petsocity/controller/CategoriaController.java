@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.petsocity.petsocity.model.Categoria;
 import com.petsocity.petsocity.service.CategoriaService;
 
 
+
 @RestController
 @RequestMapping("/api/v1/categorias")
 public class CategoriaController {
@@ -28,7 +30,7 @@ private final CategoriaService categoriaService;
     }
 
     // Leer todo
-    @GetMapping("/listacategoria")
+    @GetMapping("")
     public List<Categoria> listarCategorias() {
         return categoriaService.obtenerTodas();
     }
@@ -42,23 +44,35 @@ private final CategoriaService categoriaService;
     }
     
     // crear
-    @PostMapping("/categoria")
+    @PostMapping("")
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
         return categoriaService.crearCategoria(categoria);
     }
 
     // actualizar
     @PutMapping("/{id}")
-    public Categoria actualizarCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
-        return categoriaService.actualizarCategoria(id, categoria);
+    public ResponseEntity<Map<String, Object>> actualizarCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
+        Map<String, Object> response = new HashMap<>();
+
+        if (categoria.getNombre() == null || categoria.getNombre().trim().isEmpty()) {
+            response.put("error", "El nombre es obligatorio.");
+            return ResponseEntity.badRequest().body(response);
+        }
+        Categoria categoriaActualizada = categoriaService.actualizarCategoria(id, categoria);
+
+        response.put("mensaje", "Categoría actualizada correctamente.");
+        response.put("categoria", categoriaActualizada);
+
+        return ResponseEntity.ok(response);
     }
+
 
 
     // eliminar
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> eliminarCategoria(@PathVariable("id") Long id) {
-        categoriaService.eliminarCategoria(id);
         Map<String, String> response = new HashMap<>();
+        categoriaService.eliminarCategoria(id);
         response.put("mensaje", "Categoria eliminado correctamente");
         return ResponseEntity.ok(response);
     }

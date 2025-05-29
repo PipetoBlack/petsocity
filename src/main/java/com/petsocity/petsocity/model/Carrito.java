@@ -31,7 +31,7 @@ public class Carrito {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private EstadoCarrito estado;
-     
+    
     @Column(name = "fecha_creacion", updatable = false, insertable = false)
     private LocalDateTime fechaCreacion;
 }
