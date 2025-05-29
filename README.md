@@ -7,29 +7,35 @@ Se realiza el proyecto con la siguiente configuracion de Springboot:
 - Version SpringBoot 3.4.5
 - Packaing: JAR
 
-Comandos para subir el trabajo a github:
-git add .
-git commit -m "escribe el cambio"
-git push
-
-comando para traer los cambios realizados de otra rama
-1. Estar posicionado en la rama que quieres traer otro cambio 
-    ej: posicionarse en Main para traer cambio de rama desarrollador
-2. Escribir el siguiente comando en la terminal de Main
-    git merge *desarrollador*
-3. Se actualizan los cambios en el Main pero solo en tu entorno, para subirlo y que los demas lo vean
-   se debe de realizar un push
-    git push
-
-Comando para descargar los cambios 
-git pull
-
 Dependencias al momento de generar el springboot:
 - Spring Data JPA
 - Spring Web
 - Lombok
 - MySQL Driver
+--------------------------------------------------------------------------------------------------------
+## TIPS PARA GIT
 
+Comandos para subir el trabajo a github:
+1. git add .
+2. git commit -m "escribe el cambio"
+3. git push
+
+Comando para traer los cambios realizados de otra rama
+1. Estar posicionado en la rama que quieres traer otro cambio 
+    ej: posicionarse en Main para traer cambio de rama desarrollador
+2. Escribir el siguiente comando en la terminal de Main
+    git merge *desarrollador*
+3. Se actualizan los cambios en el Main pero solo en tu entorno, para subirlo y que los demas lo vean
+   se debe de realizar
+    git push
+
+Comando para descargar los cambios y actualizar ramas de los demás
+1. git pull
+2. git fetch
+
+Comando para crear ramas y cambiarte de rama
+1. git branch NOMBRE_DE_LA_RAMA
+2. git checkout NOMBRE_DE_LA_RAMA
 
 ---------------------------------------------------------------------------------------------------------
 ## CONFIGURACION MYSQL
