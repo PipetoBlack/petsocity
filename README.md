@@ -40,8 +40,8 @@ Comando para crear ramas y cambiarte de rama
 ---------------------------------------------------------------------------------------------------------
 ## CONFIGURACION MYSQL
 - Se debe iniciar MySQL connections con el localhost por defecto
-	*user root
-	*pass root
+	- *user: root*
+	- *pass: root*
 - Se crea DATABASE "bdpetsocity" en donde se almacenaran las tablas y sus datos.
 - Esta bd ya cuenta con todo los privilegios necesarios para hacer consultas y utilizar metodos CRUD
 --------------------------------------------------------------------------------------------------------
