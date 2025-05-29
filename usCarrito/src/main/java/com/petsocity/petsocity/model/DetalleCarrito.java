@@ -29,7 +29,7 @@ public class DetalleCarrito {
     @JoinColumn(name = "carrito_id",nullable = false)
     private Carrito carrito;
 
-    @JoinColumn(name = "producto_id",nullable = false)
+    @Column(name = "producto_id",nullable = false)
     private Long inventarioId;
 
     @Column(name = "cantidad", nullable = false)
