@@ -80,12 +80,13 @@ spring.jpa.hibernate.ddl-auto=update
 
 - 🔌 Puertos:
 
-<pre> 8087 </pre> – Carrito
-<pre> 8088 </pre> – Usuarios
-<pre> 8089 </pre> – Inventario/Categoría
+<pre> 8087  – Carrito</pre>
+<pre> 8088  – Usuarios</pre> 
+<pre> 8089  – Inventario/Categoría</pre>
 
 Todas las pruebas se ven reflejadas en el excel. 
- - Link para acceso de postman se da acceso correspondientes 
+ - Link para acceso de postman se da acceso correspondientes
+*Todas las peticiones (GET, POST, PUT, DELETE) están documentadas en la colección y reflejadas en el Excel de pruebas.*
 
 --------------------------------------------------------------------------------------------------------
 ## FELIPE
