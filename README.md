@@ -1,5 +1,11 @@
 Todo lo que deben saber para crear el proyecto y trabajar en conjunto
 ---------------------------------------------------------------------
+- [Tecnologías y Configuración](#tecnologías-y-configuración)
+- [Tips para Git](#tips-para-git)
+- [Configuración MySQL](#configuración-mysql)
+- [Pruebas con Postman](#pruebas-con-postman)
+- [Contribuidores](#contribuidores)
+
 
 Se realiza el proyecto con la siguiente configuracion de Springboot:
 - Se utiliza Gradle - Groovy
@@ -51,8 +57,7 @@ Se añade el puerto de enlace 8088,8089 y 8087 para comenzar a hacer pruebas en 
 asi con sus respectivas pruebas
 
 Todas las pruebas se ven reflejadas en el excel. 
- - Link para acceso de postman 
-	- https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
+ - Link para acceso de postman se da acceso correspondientes 
 
 --------------------------------------------------------------------------------------------------------
 ## FELIPE
