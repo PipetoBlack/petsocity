@@ -48,7 +48,8 @@ Todas las pruebas se ven reflejadas en el excel.
 Link para acceso de postman 
 
 https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
-------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
 ## VANIA
 
 Creacion de carpetas
