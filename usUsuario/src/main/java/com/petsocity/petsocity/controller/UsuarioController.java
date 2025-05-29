@@ -48,13 +48,13 @@ public class UsuarioController {
 
     // actualizar
     @PutMapping("/{id}")
-    public Usuario actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public Usuario actualizarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
         return usuarioService.actualizarUsuario(id, usuario);
     }
 
     // eliminar
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable("id") Long id) {
         usuarioService.eliminarUsuario(id);
         Map<String, String> response = new HashMap<>();
         response.put("mensaje", "Usuario eliminado correctamente");

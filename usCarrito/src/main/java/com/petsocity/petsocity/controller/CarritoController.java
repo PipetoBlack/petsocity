@@ -1,6 +1,9 @@
 package com.petsocity.petsocity.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.petsocity.petsocity.model.Carrito;
@@ -25,7 +28,7 @@ public class CarritoController {
 
     // Leer por id
     @GetMapping("/{id}")
-    public ResponseEntity<Carrito> obtenerCarritoPorId(@PathVariable Long id) {
+    public ResponseEntity<Carrito> obtenerCarritoPorId(@PathVariable("id") Long id) {
         return carritoService.obtenerPorIdCarrito(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -39,32 +42,34 @@ public class CarritoController {
 
     // actualizar
     @PutMapping("/{id}")
-    public Carrito actualizarCarrito(@PathVariable Long id, @RequestBody Carrito carrito) {
+    public Carrito actualizarCarrito(@PathVariable("id") Long id, @RequestBody Carrito carrito) {
         return carritoService.actualizarCarrito(id, carrito);
     }      
 
     // eliminar
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarCarrito(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> eliminarCarrito(@PathVariable("id") Long id) {
+        Map<String, String> response = new HashMap<>();
         carritoService.eliminarCarrito(id);
-        return ResponseEntity.noContent().build();
+        response.put("mensaje", "Carrito eliminado correctamente");
+        return ResponseEntity.ok(response);
     }
 
     // leer carrito asociado al id
     @GetMapping("/usuario/{usuarioId}")
-    public List<Carrito> obtenerCarritosPorUsuario(@PathVariable Long usuarioId) {
+    public List<Carrito> obtenerCarritosPorUsuario(@PathVariable("usuarioId") Long usuarioId) {
         return carritoService.obtenerPorUsuarioId(usuarioId);
     }
 
     // leer estado
     @GetMapping("/estado/{estado}")
-    public List<Carrito> obtenerCarritosPorEstado(@PathVariable EstadoCarrito estado) {
+    public List<Carrito> obtenerCarritosPorEstado(@PathVariable("estado") EstadoCarrito estado) {
         return carritoService.obtenerPorEstado(estado);
     }
 
     // leer usuario y estado
     @GetMapping("/usuario/{usuarioId}/estado/{estado}")
-    public List<Carrito> obtenerCarritosPorUsuarioYEstado(@PathVariable Long usuarioId, @PathVariable EstadoCarrito estado) {
+    public List<Carrito> obtenerCarritosPorUsuarioYEstado(@PathVariable("usuarioId") Long usuarioId, @PathVariable("estado") EstadoCarrito estado) {
         return carritoService.obtenerPorUsuarioYEstado(usuarioId, estado);
     }
 }
