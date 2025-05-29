@@ -25,13 +25,13 @@ public class DetalleCarritoController {
     }
 
     // Leer todo
-    @GetMapping("/detalles")
+    @GetMapping("")
     public List<DetalleCarrito> obtenerTodosDetalles() {
         return detalleCarritoService.obtenerTodosDetalles();
     }
 
     // Leer por id
-    @GetMapping("/detalle/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<DetalleCarrito> obtenerDetallePorId(@PathVariable Long id) {
         return detalleCarritoService.obtenerPorIDDetalle(id)
                 .map(ResponseEntity::ok)
@@ -39,19 +39,19 @@ public class DetalleCarritoController {
     }
 
     // crear
-    @PostMapping("/detalle")
+    @PostMapping("")
     public ResponseEntity<DetalleCarrito> crearDetalle(@RequestBody DetalleCarrito detalleCarrito) {
         return ResponseEntity.ok(detalleCarritoService.crearDetalleCarrito(detalleCarrito));
     }
 
     // actualizar
-    @PutMapping("/detalle/{id}")
+    @PutMapping("/{id}")
     public DetalleCarrito actualizarDetalle(@PathVariable Long id, @RequestBody DetalleCarrito detalleCarrito) {
         return detalleCarritoService.actualizarDetalleCarrito(id, detalleCarrito);
     }
     
     // eliminar
-    @DeleteMapping("/detalle/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarDetalle(@PathVariable Long id) {
         detalleCarritoService.eliminarDetalleCarrito(id);
         return ResponseEntity.noContent().build();

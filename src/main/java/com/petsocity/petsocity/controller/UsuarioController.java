@@ -27,13 +27,13 @@ public class UsuarioController {
     }
 
     // Leer todo
-    @GetMapping("/listausuarios")
+    @GetMapping("")
     public List<Usuario> obtenerTodosUsuarios() {
         return usuarioService.obtenerTodosUsuarios();
     }
 
     // Leer por id
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return usuarioService.obtenerPorIdUsuario(id)
                 .map(ResponseEntity::ok)
@@ -41,19 +41,19 @@ public class UsuarioController {
     }
 
     // crear
-    @PostMapping("/usuario")
+    @PostMapping("")
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
         return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
     }
 
     // actualizar
-    @PutMapping("/usuario/{id}")
+    @PutMapping("/{id}")
     public Usuario actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         return usuarioService.actualizarUsuario(id, usuario);
     }
 
     // eliminar
-    @DeleteMapping("/usuario/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
         Map<String, String> response = new HashMap<>();
