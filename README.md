@@ -42,6 +42,7 @@ Comandos para subir el trabajo a github:
 3. Súbelo a tu propia rama local
 <pre> git push </pre>
 
+
 Comando para traer los cambios realizados de otra rama
 1. Múevete a la rama destino, ej. main
 <pre> git checkout main  </pre>
@@ -51,26 +52,37 @@ Comando para traer los cambios realizados de otra rama
    se debe de realizar
 <pre> git push  </pre>
 
+
 Comando para descargar los cambios y actualizar ramas de los demás
 <pre> git pull  </pre>
 <pre> git fetch  </pre>
+
 
 Crear y cambiar rama
 <pre> git branch NOMBRE_DE_LA_RAMA  </pre>
 <pre> git checkout NOMBRE_DE_LA_RAMA </pre>
 
 ---------------------------------------------------------------------------------------------------------
-## CONFIGURACION MYSQL
-- Se debe iniciar MySQL connections con el localhost por defecto
+## 💾 Configuración MySQL
+1. Inicia tu servidor MySQL (localhost):
 	- *user: root*
 	- *pass: root*
-- Se crea DATABASE "bdpetsocity" en donde se almacenaran las tablas y sus datos.
-- Esta bd ya cuenta con todo los privilegios necesarios para hacer consultas y utilizar metodos CRUD
+2. Crea la base de datos:
+<pre> CREATE DATABASE bdpetsocity; </pre>
+3. Asegúrate de que application.properties apunte a:
+<pre> spring.datasource.url=jdbc:mysql://localhost:3306/bdpetsocity
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+ </pre>
 --------------------------------------------------------------------------------------------------------
-## PRUEBAS CON POSTMAN
+## 📬 Pruebas con Postman
 
-Se añade el puerto de enlace 8088,8089 y 8087 para comenzar a hacer pruebas en Postman
-asi con sus respectivas pruebas
+- 🔌 Puertos:
+
+<pre> 8087 </pre> – Carrito
+<pre> 8088 </pre> – Usuarios
+<pre> 8089 </pre> – Inventario/Categoría
 
 Todas las pruebas se ven reflejadas en el excel. 
  - Link para acceso de postman se da acceso correspondientes 
