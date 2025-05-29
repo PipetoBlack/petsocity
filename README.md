@@ -78,7 +78,7 @@ spring.jpa.hibernate.ddl-auto=update
 --------------------------------------------------------------------------------------------------------
 ## 📬 Pruebas con Postman
 
-- 🔌 Puertos:
+**🔌 Puertos:**
 
 <pre> 8087  – Carrito</pre>
 <pre> 8088  – Usuarios</pre> 
@@ -89,7 +89,9 @@ Todas las pruebas se ven reflejadas en el excel.
 *Todas las peticiones (GET, POST, PUT, DELETE) están documentadas en la colección y reflejadas en el Excel de pruebas.*
 
 --------------------------------------------------------------------------------------------------------
-## FELIPE
+## 👥 Contribuidores
+
+**FELIPE**
 
 Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
 
@@ -114,7 +116,7 @@ Optimización
 - se modifica el modelo usuario para una mejor interaccion con el usuario
 
 ---------------------------------------------------------------------------------------------------------------------
-## VANIA
+**VANIA**
 
 Creacion de carpetas
 - controller
@@ -138,7 +140,7 @@ Configuracion de archivo application.propierties
 
 ----------------------------------------------------------------------------------------
 
-## ALAN
+**ALAN**
 
 Solución de conflicto en código
 Creación de rama + Creación de métodos en carrito.
@@ -147,7 +149,7 @@ Se completa el informe.
 
 ---------------------------------------------------------------------------------------
 
-## ALEXIS
+**ALEXIS**
 
 Creación de Rama + creación de métodos y cambios en sección de DETALLECARRITO, y corrección de errores en ellos. También se comento en ellas para saber su uso
 Mejora en Detalle Carrito ya que unos de los métodos estaba mal escrito.
