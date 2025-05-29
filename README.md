@@ -63,18 +63,14 @@ Creacion de clases
 
 Configuracion de archivo application.propierties
 - Se configura para almacenar de manera local
-
 - Creacion de las clases en modelo
-
 - Se corrigen errores en las clases para un mejor flujo de trabajo
 
-
-
--Se agrega en Usuariocontroller una validación para ver al momento cuando se borra desde el postman
--Se realizan mejoras y testeos de categoríaController,inventarioController, también se mejora los endpoint y el delete de categoríaController
--Se migra a carpetas nuevas y mejorando el proyecto así moviendo sus archivos a sus respectivos microservicios
--Se realiza copias de archivos
--Se realizaron Pruebas en POSTAMN dando éxito en todas y cada una de las pruebas
+- Se agrega en Usuariocontroller una validación para ver al momento cuando se borra desde el postman
+- Se realizan mejoras y testeos de categoríaController,inventarioController, también se mejora los endpoint y el delete de categoríaController
+- Se migra a carpetas nuevas y mejorando el proyecto así moviendo sus archivos a sus respectivos microservicios
+- Se realiza copias de archivos
+- Se realizaron Pruebas en POSTAMN dando éxito en todas y cada una de las pruebas
 
 ----------------------------------------------------------------------------------------
 
@@ -114,7 +110,7 @@ Creacion archivo bdpetsocity
 para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!
 
 -> Optimización
--Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
+- Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
 - Se elimina Rol
 - Se modifica el scrip sql
 - se modifica el modelo usuario para una mejor interaccion con el usuario
