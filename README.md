@@ -34,7 +34,7 @@
 
 ### Comandos básicos 
 
-Comandos para subir el trabajo a github:
+# Comandos para subir el trabajo a github:
 1. Guarda tus cambios local
 <pre> git add . </pre>
 2. Agregale un comentario
@@ -43,7 +43,7 @@ Comandos para subir el trabajo a github:
 <pre> git push </pre>
 
 
-Comando para traer los cambios realizados de otra rama
+# Comando para traer los cambios realizados de otra rama
 1. Múevete a la rama destino, ej. main
 <pre> git checkout main  </pre>
 2. Fusiona la rama desarrollador
@@ -53,12 +53,12 @@ Comando para traer los cambios realizados de otra rama
 <pre> git push  </pre>
 
 
-Comando para descargar los cambios y actualizar ramas de los demás
+# Comando para descargar los cambios y actualizar ramas de los demás
 <pre> git pull  </pre>
 <pre> git fetch  </pre>
 
 
-Crear y cambiar rama
+# Crear y cambiar rama
 <pre> git branch NOMBRE_DE_LA_RAMA  </pre>
 <pre> git checkout NOMBRE_DE_LA_RAMA </pre>
 
@@ -134,7 +134,7 @@ Configuracion de archivo application.propierties
 - Se realizan mejoras y testeos de categoríaController,inventarioController, también se mejora los endpoint y el delete de categoríaController
 - Se migra a carpetas nuevas y mejorando el proyecto así moviendo sus archivos a sus respectivos microservicios
 - Se realiza copias de archivos
-- Se realizaron Pruebas en POSTAMN dando éxito en todas y cada una de las pruebas
+- Se realizaron Pruebas en POSTAMAN dando éxito en todas y cada una de las pruebas
 
 ----------------------------------------------------------------------------------------
 
