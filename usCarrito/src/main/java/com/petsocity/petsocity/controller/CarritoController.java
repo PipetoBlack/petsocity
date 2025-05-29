@@ -18,7 +18,7 @@ public class CarritoController {
     }
 
     // Leer todo
-    @GetMapping("/listacarrito")
+    @GetMapping("")
     public List<Carrito> obtenerTodosCarritos() {
         return carritoService.obtenerTodosCarritos();
     }
@@ -32,7 +32,7 @@ public class CarritoController {
     }
 
     // crear
-    @PostMapping("/carrito")
+    @PostMapping("")
     public ResponseEntity<Carrito> crearCarrito(@RequestBody Carrito carrito) {
         return ResponseEntity.ok(carritoService.crearCarrito(carrito));
     }

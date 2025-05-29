@@ -36,7 +36,7 @@ private final CategoriaService categoriaService;
     }
 
     // Leer por id
-    @GetMapping("/categoria/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Categoria> obtenerPorId(@PathVariable("id") Long id) {
         return categoriaService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
@@ -65,8 +65,6 @@ private final CategoriaService categoriaService;
 
         return ResponseEntity.ok(response);
     }
-
-
 
     // eliminar
     @DeleteMapping("/{id}")

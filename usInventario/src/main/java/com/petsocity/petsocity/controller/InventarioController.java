@@ -41,16 +41,6 @@ public class InventarioController {
         return inventario.map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
     }
 
-    // Buscar por nombre
-    @GetMapping("/nombre/{nombre}")
-    public ResponseEntity<List<Inventario>> buscarPorNombre(@PathVariable String nombre){
-        List<Inventario> resultados = inventarioService.buscarPorNombre(nombre);
-        if (resultados.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(resultados);
-    }
-
     // Buscar por categoria
     @GetMapping("/categoria/{id}")
     public List<Inventario> obtenerPorCategoria(@PathVariable("id") Long categoriaId) {
