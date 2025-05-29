@@ -35,26 +35,29 @@
 ### Comandos básicos 
 
 Comandos para subir el trabajo a github:
-1. git add .
-2. git commit -m "escribe el cambio"
-3. git push
+1. Guarda tus cambios local
+<pre> git add . </pre>
+2. Agregale un comentario
+<pre> git commit -m "escribe el cambio" </pre>
+3. Súbelo a tu propia rama local
+<pre> git push </pre>
 
 Comando para traer los cambios realizados de otra rama
 1. Múevete a la rama destino, ej. main
-	- <pre> ```git checkout main ``` </pre>
-2. Escribir el siguiente comando en la terminal de Main
-    git merge *desarrollador*
-3. Se actualizan los cambios en el Main pero solo en tu entorno, para subirlo y que los demas lo vean
+<pre> git checkout main  </pre>
+2. Fusiona la rama desarrollador
+<pre> git merge desarrollador </pre>
+3. Empuja tus cambios
    se debe de realizar
-    git push
+<pre> git push  </pre>
 
 Comando para descargar los cambios y actualizar ramas de los demás
-1. git pull
-2. git fetch
+<pre> git pull  </pre>
+<pre> git fetch  </pre>
 
-Comando para crear ramas y cambiarte de rama
-1. git branch NOMBRE_DE_LA_RAMA
-2. git checkout NOMBRE_DE_LA_RAMA
+Crear y cambiar rama
+<pre> git branch NOMBRE_DE_LA_RAMA  </pre>
+<pre> git checkout NOMBRE_DE_LA_RAMA </pre>
 
 ---------------------------------------------------------------------------------------------------------
 ## CONFIGURACION MYSQL
