@@ -24,9 +24,8 @@ public class Carrito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    private Long usuarioId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
