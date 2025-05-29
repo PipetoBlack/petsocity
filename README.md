@@ -50,6 +50,31 @@ Link para acceso de postman
 https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
 
 --------------------------------------------------------------------------------------------------------
+## FELIPE
+
+Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
+
+Creacion archivo bdpetsocity
+- Se agrega el script sql
+
+Se añade el puerto de enlace 8087,8088 y 8089 para comenzar a hacer pruebas en Postman
+- 8087 para el microservicio de carrito
+- 8088 para el microservicio de usuarios
+- 8089 para el microservicio de inventario / categoria
+
+*Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.*
+- ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
+
+*Ultimas actualizaciones: Después de una gran batalla con la unificación de ciertas clases con entidad relacional, pudimos dar con éxito el levantamiento el servidor 
+para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!*
+
+Optimización
+- Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
+- Se elimina Rol
+- Se modifica el scrip sql
+- se modifica el modelo usuario para una mejor interaccion con el usuario
+
+---------------------------------------------------------------------------------------------------------------------
 ## VANIA
 
 Creacion de carpetas
@@ -91,26 +116,4 @@ Se completa la documentación para un mejor entendimiento de lo que se hizo dura
 
 -------------------------------------------------------------------------------
 
-## FELIPE
 
-Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
-
-Creacion archivo bdpetsocity
-- Se agrega el script sql
-
-Se añade el puerto de enlace 8087,8088 y 8089 para comenzar a hacer pruebas en Postman
-- 8087 para el microservicio de carrito
-- 8088 para el microservicio de usuarios
-- 8089 para el microservicio de inventario / categoria
-
-*Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.*
-- ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
-
-*Ultimas actualizaciones: Después de una gran batalla con la unificación de ciertas clases con entidad relacional, pudimos dar con éxito el levantamiento el servidor 
-para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!*
-
-Optimización
-- Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
-- Se elimina Rol
-- Se modifica el scrip sql
-- se modifica el modelo usuario para una mejor interaccion con el usuario
