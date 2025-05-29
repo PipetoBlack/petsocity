@@ -30,8 +30,9 @@
 - 🐬 MySQL Driver  
 
 ---
---------------------------------------------------------------------------------------------------------
-## TIPS PARA GIT
+## 🚀 Tips para Git
+
+### Comandos básicos 
 
 Comandos para subir el trabajo a github:
 1. git add .
@@ -39,8 +40,8 @@ Comandos para subir el trabajo a github:
 3. git push
 
 Comando para traer los cambios realizados de otra rama
-1. Estar posicionado en la rama que quieres traer otro cambio 
-    ej: posicionarse en Main para traer cambio de rama desarrollador
+1. Múevete a la rama destino, ej. main
+	- <pre> ```git checkout main ``` </pre>
 2. Escribir el siguiente comando en la terminal de Main
     git merge *desarrollador*
 3. Se actualizan los cambios en el Main pero solo en tu entorno, para subirlo y que los demas lo vean
