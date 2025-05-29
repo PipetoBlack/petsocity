@@ -98,18 +98,18 @@ Durante todo el proceso se hicieron varios cambios dentro de código tanto para 
 Creacion archivo bdpetsocity
 - Se agrega el script sql
 
-- Se añade el puerto de enlace 8087,8088 y 8089 para comenzar a hacer pruebas en Postman
+Se añade el puerto de enlace 8087,8088 y 8089 para comenzar a hacer pruebas en Postman
 - 8087 para el microservicio de carrito
 - 8088 para el microservicio de usuarios
 - 8089 para el microservicio de inventario / categoria
 
--> Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.
+*Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.*
 - ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
 
--> Ultimas actualizaciones: Después de una gran batalla con la unificación de ciertas clases con entidad relacional, pudimos dar con éxito el levantamiento el servidor 
-para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!
+*Ultimas actualizaciones: Después de una gran batalla con la unificación de ciertas clases con entidad relacional, pudimos dar con éxito el levantamiento el servidor 
+para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!*
 
--> Optimización
+Optimización
 - Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
 - Se elimina Rol
 - Se modifica el scrip sql
