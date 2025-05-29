@@ -34,7 +34,7 @@
 
 ### Comandos básicos 
 
-# Comandos para subir el trabajo a github:
+**Comandos para subir el trabajo a github:**
 1. Guarda tus cambios local
 <pre> git add . </pre>
 2. Agregale un comentario
@@ -43,7 +43,7 @@
 <pre> git push </pre>
 
 
-# Comando para traer los cambios realizados de otra rama
+**Comando para traer los cambios realizados de otra rama**
 1. Múevete a la rama destino, ej. main
 <pre> git checkout main  </pre>
 2. Fusiona la rama desarrollador
@@ -53,12 +53,12 @@
 <pre> git push  </pre>
 
 
-# Comando para descargar los cambios y actualizar ramas de los demás
+**Comando para descargar los cambios y actualizar ramas de los demás**
 <pre> git pull  </pre>
 <pre> git fetch  </pre>
 
 
-# Crear y cambiar rama
+**Crear y cambiar rama**
 <pre> git branch NOMBRE_DE_LA_RAMA  </pre>
 <pre> git checkout NOMBRE_DE_LA_RAMA </pre>
 
