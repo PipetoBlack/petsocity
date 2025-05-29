@@ -46,14 +46,12 @@ asi con sus respectivas pruebas
 
 Todas las pruebas se ven reflejadas en el excel. 
 Link para acceso de postman 
-<a href="[https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560)" target="_blank"> 
-        Postman
-</a>
 
 https://app.getpostman.com/join-team?invite_code=daed2daf6a234aee8ef359eac65d2e4f5436f344ef05b23c5d0452139294f4e4&target_code=b24842dce38883c27e94da6a3c958560
 ------------------------------------------------------
 
-Vania. 
+VANIA
+
 Creacion de carpetas
 - controller
 - model
@@ -80,8 +78,7 @@ Configuracion de archivo application.propierties
 
 ----------------------------------------------------------------------------------------
 
-
-Alan.
+ALAN
 Solución de conflicto en código
 Creación de rama + Creación de métodos en carrito.
 También se realizo modificaciones en detalle carrito, se modifico nombres mal escritos y se realizan querys para este, también se optimiza código en carritoRepository
@@ -89,14 +86,15 @@ Se completa el informe.
 
 ---------------------------------------------------------------------------------------
 
-Alexis.
+ALEXIS
+
 Creación de Rama + creación de métodos y cambios en sección de DETALLECARRITO, y corrección de errores en ellos. También se comento en ellas para saber su uso
 Mejora en Detalle Carrito ya que unos de los métodos estaba mal escrito.
 Se completa la documentación para un mejor entendimiento de lo que se hizo durante el proceso del código 
 
 -------------------------------------------------------------------------------
 
-Felipe.
+FELIPE
 
 Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
 
