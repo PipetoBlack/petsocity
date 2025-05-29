@@ -1,23 +1,35 @@
-Todo lo que deben saber para crear el proyecto y trabajar en conjunto
----------------------------------------------------------------------
-- [Tecnologías y Configuración](#tecnologías-y-configuración)
-- [Tips para Git](#tips-para-git)
-- [Configuración MySQL](#configuración-mysql)
-- [Pruebas con Postman](#pruebas-con-postman)
-- [Contribuidores](#contribuidores)
+# 🐾 Petsocity – Microservicios
+
+> Toda la información que necesitas para levantar el proyecto, colaborar en equipo y probar los servicios.
+
+---
+
+## 📑 Índice
+
+- [🔧 Tecnologías y Configuración](#-tecnologías-y-configuración)  
+- [🚀 Tips para Git](#-tips-para-git)  
+- [💾 Configuración MySQL](#-configuración-mysql)  
+- [📬 Pruebas con Postman](#-pruebas-con-postman)  
+- [👥 Contribuidores](#-contribuidores)  
+
+---
 
 
-Se realiza el proyecto con la siguiente configuracion de Springboot:
-- Se utiliza Gradle - Groovy
-- Lenguaje JAVA --version 24
-- Version SpringBoot 3.4.5
-- Packaing: JAR
+## 🔧 Tecnologías y Configuración
 
-Dependencias al momento de generar el springboot:
-- Spring Data JPA
-- Spring Web
-- Lombok
-- MySQL Driver
+**Stack**  
+- 🛠️ **Build**: Gradle (Groovy)  
+- ☕ **Java**: versión 24  
+- 🌱 **Spring Boot**: 3.4.5  
+- 📦 **Packaging**: JAR  
+
+**Dependencias principales**  
+- ✅ Spring Data JPA  
+- 🌐 Spring Web  
+- 🧩 Lombok  
+- 🐬 MySQL Driver  
+
+---
 --------------------------------------------------------------------------------------------------------
 ## TIPS PARA GIT
 
