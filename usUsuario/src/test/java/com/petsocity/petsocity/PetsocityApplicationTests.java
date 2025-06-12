@@ -1,5 +1,6 @@
 package com.petsocity.petsocity;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,12 +24,14 @@ class PetsocityApplicationTests {
     private TestRestTemplate restTemplate;
 
 	@Test
+    @Order(1)
 	void contextLoads() {
 		System.out.println("Testing the context loading...");
         // System.out.println("Server running on port: " + port);
 	}
 
 	@Test
+    @Order(2)
     void contextLoads2() throws Exception {
         System.out.println("Testing the context loading. and the controller...");
         assertThat(usuarioController).isNotNull();
@@ -36,6 +39,7 @@ class PetsocityApplicationTests {
 
 	
     @Test
+    @Order(3)
     void getUsuariosContainsBrackets() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port +
                 "/api/v1/usuarios",
