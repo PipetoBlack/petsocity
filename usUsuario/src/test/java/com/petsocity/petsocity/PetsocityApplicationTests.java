@@ -81,6 +81,8 @@ class PetsocityApplicationTests {
         assertThat(response.getBody().getEmail()).isEqualTo(nuevoUsuario.getEmail());
     }
 
+    // GET FALTANTE
+
     @Test
     @Order(5)
     void updateUsuarioShouldSucceed() {
