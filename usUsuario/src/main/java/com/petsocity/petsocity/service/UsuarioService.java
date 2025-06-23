@@ -34,6 +34,21 @@ public class UsuarioService {
         if (usuarioRepository.existsByEmail(usuario.getEmail())){
             throw new IllegalArgumentException("El correo ingresado ya esta registrado");
         }
+        if (!usuario.getPrimerNombre().matches("^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$")) {
+        throw new IllegalArgumentException("El primer nombre solo debe contener letras");
+        }
+        if (!usuario.getSegundoNombre().matches("^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$")) {
+        throw new IllegalArgumentException("El segundo nombre solo debe contener letras");
+        }
+        if (!usuario.getPrimerApellido().matches("^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$")) {
+        throw new IllegalArgumentException("El primer apellido solo debe contener letras");
+        }
+        if (!usuario.getSegundoApellido().matches("^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$")) {
+        throw new IllegalArgumentException("El segundo apellido solo debe contener letras");
+        }
+        if (!usuario.getEmail().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+        throw new IllegalArgumentException("El correo debe tener un formato válido");
+        }
         return usuarioRepository.save(usuario);
     }
 

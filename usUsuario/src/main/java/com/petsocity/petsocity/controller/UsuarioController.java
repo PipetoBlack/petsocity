@@ -44,7 +44,9 @@ public class UsuarioController {
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "No se puede generar la lista de usuarios",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Usuario.class)))
+                        schema = @Schema(implementation = Usuario.class))),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor",
+                        content = @Content(mediaType = "application/json"))
     })
     public List<Usuario> obtenerTodosUsuarios() {
         return usuarioService.obtenerTodosUsuarios();
@@ -59,7 +61,9 @@ public class UsuarioController {
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no encontrado",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Usuario.class)))
+                        schema = @Schema(implementation = Usuario.class))),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor",
+                        content = @Content(mediaType = "application/json"))
     })
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return usuarioService.obtenerPorIdUsuario(id)
@@ -76,14 +80,20 @@ public class UsuarioController {
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "¡Correo duplicado!. Recuerda mantener los campos de ID y FechaCreacion vacias",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Usuario.class)))
+                        schema = @Schema(implementation = Usuario.class))),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor",
+                        content = @Content(mediaType = "application/json"))
     })
     public ResponseEntity<?> crearUsuario(@RequestBody @Valid Usuario usuario) {
         try{
             Usuario creado = usuarioService.crearUsuario(usuario);
             return ResponseEntity.ok(creado);
         } catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(Map.of("error ",e.getMessage()));
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().body(
+                Map.of("error", "detalles: "+e.getMessage())
+            );
         }
         //return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
     }
@@ -97,7 +107,9 @@ public class UsuarioController {
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no existe",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Usuario.class)))
+                        schema = @Schema(implementation = Usuario.class))),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor",
+                        content = @Content(mediaType = "application/json"))
     })
     public Usuario actualizarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
         return usuarioService.actualizarUsuario(id, usuario);
@@ -112,7 +124,9 @@ public class UsuarioController {
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no existe",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Usuario.class)))
+                        schema = @Schema(implementation = Usuario.class))),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor",
+                        content = @Content(mediaType = "application/json"))
     })
     public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable("id") Long id) {
         usuarioService.eliminarUsuario(id);
