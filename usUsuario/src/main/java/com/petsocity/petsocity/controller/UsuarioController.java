@@ -73,12 +73,18 @@ public class UsuarioController {
         @ApiResponse(responseCode = "200", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
-        @ApiResponse(responseCode = "400", description = "No es posible crear el usuario, verifica atributos",
+        @ApiResponse(responseCode = "400", description = "¡Correo duplicado!. Recuerda mantener los campos de ID y FechaCreacion vacias",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class)))
     })
-    public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
-        return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
+    public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
+        try{
+            Usuario creado = usuarioService.crearUsuario(usuario);
+            return ResponseEntity.ok(creado);
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        //return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
     }
 
     // actualizar

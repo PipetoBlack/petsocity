@@ -31,6 +31,9 @@ public class UsuarioService {
         if (usuario.getId() != null) {
             throw new RuntimeException("El ID debe ser nulo");
         }
+        if (usuarioRepository.existsByEmail(usuario.getEmail())){
+            throw new IllegalArgumentException("El correo ingresado ya esta registrado");
+        }
         return usuarioRepository.save(usuario);
     }
 
