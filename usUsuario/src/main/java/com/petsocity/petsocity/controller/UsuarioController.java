@@ -22,6 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/usuarios")
@@ -38,7 +39,7 @@ public class UsuarioController {
     @GetMapping("")
     @Operation(summary = "Obtener lista completa de usuarios", description = "Se obtiene la lista de todo los usuarios")
     @ApiResponses(value ={
-        @ApiResponse(responseCode = "200", description = "Operación exitosa",
+        @ApiResponse(responseCode = "201", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "No se puede generar la lista de usuarios",
@@ -53,7 +54,7 @@ public class UsuarioController {
     @GetMapping("/{id}")
     @Operation(summary = "Obtener un usuario por su ID", description = "Se obtiene solo un usuario por el ID")
     @ApiResponses(value ={
-        @ApiResponse(responseCode = "200", description = "Operación exitosa",
+        @ApiResponse(responseCode = "201", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no encontrado",
@@ -70,14 +71,14 @@ public class UsuarioController {
     @PostMapping("")
     @Operation(summary = "Creacion de usuarios", description = "Se crea un usuario nuevo")
     @ApiResponses(value ={
-        @ApiResponse(responseCode = "200", description = "Operación exitosa",
+        @ApiResponse(responseCode = "201", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "¡Correo duplicado!. Recuerda mantener los campos de ID y FechaCreacion vacias",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class)))
     })
-    public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> crearUsuario(@RequestBody @Valid Usuario usuario) {
         try{
             Usuario creado = usuarioService.crearUsuario(usuario);
             return ResponseEntity.ok(creado);
@@ -91,7 +92,7 @@ public class UsuarioController {
     @PutMapping("/{id}")
     @Operation(summary = "Actualizar un usuario por su ID", description = "Se puede actualizar uno o varios atributos del usuario por su ID")
     @ApiResponses(value ={
-        @ApiResponse(responseCode = "200", description = "Operación exitosa",
+        @ApiResponse(responseCode = "201", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no existe",
@@ -106,7 +107,7 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Eliminar usuario por su ID", description = "Se elimina usuario por ID")
     @ApiResponses(value ={
-        @ApiResponse(responseCode = "200", description = "Operación exitosa",
+        @ApiResponse(responseCode = "201", description = "Operación exitosa",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = Usuario.class))),
         @ApiResponse(responseCode = "400", description = "ID no existe",

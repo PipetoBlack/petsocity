@@ -40,6 +40,9 @@ dependencies {
 
 	// https://spring.io/projects/spring-hateoas
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+
+	// Dependencia para validaciones
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	
 }
 
