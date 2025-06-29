@@ -21,7 +21,7 @@ public class DataLoader implements CommandLineRunner{
         Faker faker = new Faker();
 
         // Generar estudiantes
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 3; i++) {
             Usuario usuario = new Usuario();
             //usuario.setId(i + 1);
             usuario.setPrimerNombre(faker.name().firstName());
