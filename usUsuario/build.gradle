@@ -31,9 +31,18 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// https://www.datafaker.net/documentation/getting-started/
 	implementation 'net.datafaker:datafaker:2.4.2'
 
+	// https://springdoc.org/	
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+	// https://spring.io/projects/spring-hateoas
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+
+	// Dependencia para validaciones
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	
 }
 
