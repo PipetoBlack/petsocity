@@ -23,8 +23,8 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> obtenerPorIdUsuario(Long id) {
-        return usuarioRepository.findById(id);
+    public Usuario obtenerPorIdUsuario(Long id) {
+        return usuarioRepository.findById(id).orElse(null);
     }
 
     public Usuario crearUsuario(Usuario usuario) {
@@ -79,7 +79,13 @@ public class UsuarioService {
         }).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
-    public void eliminarUsuario(Long id) {
-        usuarioRepository.deleteById(id);
+    public boolean eliminarUsuario(Long id) {
+    Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if (usuario.isPresent()) {
+            usuarioRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
