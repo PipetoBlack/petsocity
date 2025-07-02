@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import com.petsocity.petsocity.controller.UsuarioController;
 import com.petsocity.petsocity.model.Usuario;
+import com.petsocity.petsocity.model.ApiErrorModel;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
@@ -43,9 +43,9 @@ public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuar
      * @param message mensaje explicativo o detalle del fallo
      * @return EntityModel que contiene el cuerpo del error y enlaces relacionados
      */
-    public EntityModel<Map<String, String>> wrapError(String key, String message) {
-        Map<String, String> errorBody = Map.of(key, message);
-        return EntityModel.of(errorBody,
+    
+    public EntityModel<ApiErrorModel> wrapError(ApiErrorModel error) {
+        return EntityModel.of(error,
             linkTo(methodOn(UsuarioController.class).obtenerTodosUsuarios()).withRel("usuarios")
         );
     }
@@ -63,6 +63,7 @@ public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuar
      * @param listaUsuarios lista completa de usuarios obtenida desde el servicio
      * @return CollectionModel que contiene los EntityModel individuales con enlaces HATEOAS
      */
+
     public CollectionModel<EntityModel<Usuario>> toCollection(List<Usuario> listaUsuarios) {
         List<EntityModel<Usuario>> modelos = listaUsuarios.stream()
             .map(this::toModel)
