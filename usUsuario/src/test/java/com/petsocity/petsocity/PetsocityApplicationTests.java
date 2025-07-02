@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -39,27 +41,44 @@ class PetsocityApplicationTests {
 
     private final Faker faker = new Faker();
 
-    // Método privado de usuario reutilizable
-    private Long crearUsuarioDePrueba(String emailExtra) {
-        Usuario nuevo = new Usuario();
-        
-        nuevo.setPrimerNombre(faker.name().firstName());
-        nuevo.setSegundoNombre(faker.name().firstName());
-        nuevo.setPrimerApellido(faker.name().lastName());
-        nuevo.setSegundoApellido(faker.name().lastName());
-        nuevo.setEmail(faker.internet().emailAddress() + emailExtra);
-        nuevo.setContrasenia(faker.internet().password());
-        nuevo.setDireccion(faker.address().fullAddress());
-
-        ResponseEntity<Usuario> response = restTemplate.postForEntity(
-            "http://localhost:" + port + "/api/v1/usuarios",
-            nuevo,
-            Usuario.class
-        );
-
-        assertThat(response.getBody()).isNotNull();
-        return response.getBody().getId();
+    // Limpia la base de datos test si se encuentran datos
+    @BeforeEach
+    void limpiarBaseDeDatos() {
+        usuarioRepository.deleteAll();
     }
+
+
+    // Método privado de usuario reutilizable
+   private Long crearUsuarioDePrueba(String emailExtra) {
+    Usuario nuevo = new Usuario();
+    nuevo.setPrimerNombre(faker.name().firstName());
+    nuevo.setSegundoNombre(faker.name().firstName());
+    nuevo.setPrimerApellido(faker.name().lastName());
+    nuevo.setSegundoApellido(faker.name().lastName());
+    nuevo.setEmail(faker.internet().emailAddress());
+    nuevo.setContrasenia(faker.internet().password());
+    nuevo.setDireccion(faker.address().fullAddress());
+
+    ResponseEntity<EntityModel<Usuario>> response = restTemplate.exchange(
+        "http://localhost:" + port + "/api/v1/usuarios",
+        HttpMethod.POST,
+        new HttpEntity<>(nuevo),
+        new ParameterizedTypeReference<>() {}
+    );
+
+    EntityModel<Usuario> entityModel = response.getBody();
+        if (entityModel == null) {
+            throw new IllegalStateException("La respuesta del servidor fue nula");
+        }
+    
+        Usuario contenido = entityModel.getContent();
+        if (contenido == null) {
+            throw new IllegalStateException("El contenido del EntityModel fue nulo");
+        }
+    
+        return contenido.getId();
+    }
+
 
 
 	@Test
@@ -76,31 +95,25 @@ class PetsocityApplicationTests {
         assertThat(usuarioController).isNotNull();
     }
 
-    @BeforeEach
+
+    @Test   
     @Order(3)
-    void limpiarBaseDeDatos() {
-        usuarioRepository.deleteAll();
+    void usuarioColeccionVaciaTest() throws Exception {
+            String response = this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/usuarios", String.class);
+            // Afirmamos que el cuerpo contiene los enlaces (self)
+            assertThat(response).contains("\"_links\"");
     }
+
 
     @Test
     @Order(4)
-    void getUsuariosContainsBrackets() throws Exception {
-            String response = this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/usuarios", String.class);
-            assertThat(response).contains("[");
-    }
-
-
-    // GET FALTANTE
-
-    @Test
-    @Order(5)
-    void createUsuarioShouldReturnCreated() {
+    void crearUsuarioTest() {
         Usuario usuario = new Usuario();
         usuario.setPrimerNombre(faker.name().firstName());
         usuario.setSegundoNombre(faker.name().firstName());
         usuario.setPrimerApellido(faker.name().lastName());
         usuario.setSegundoApellido(faker.name().lastName());
-        usuario.setEmail(faker.internet().emailAddress() + "Test4");
+        usuario.setEmail("Test4" + faker.internet().emailAddress());
         usuario.setContrasenia(faker.internet().password());
         usuario.setDireccion(faker.address().fullAddress());
 
@@ -113,8 +126,8 @@ class PetsocityApplicationTests {
     }
 
     @Test
-    @Order(6)
-    void getUsuarios() throws Exception {
+    @Order(5)
+    void obtenerUsuarioTest() throws Exception {
         System.out.println("port: " + port);
         assertThat(this.restTemplate.getForObject("http://localhost:" + port +
                 "/api/v1/usuarios",
@@ -122,11 +135,10 @@ class PetsocityApplicationTests {
     }
 
     @Test
-    @Order(7)
+    @Order(6)
     void updateUsuarioShouldSucceed() {
         Long id = crearUsuarioDePrueba("Update");
 
-        // Verifica que el ID generado en el test 4 esté presente
         assertThat(id)
             .withFailMessage("No se encontró el ID del usuario de prueba. Asegúrate de que el UsuarioTest se haya ejecutado.")
             .isNotNull();
@@ -175,7 +187,7 @@ class PetsocityApplicationTests {
 
 
     @Test
-    @Order(8)
+    @Order(7)
     void deleteUsuarioShouldRemoveSuccessfully() {
         Long id = crearUsuarioDePrueba("delete");
 
