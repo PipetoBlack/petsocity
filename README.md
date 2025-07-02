@@ -77,7 +77,7 @@ spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=update
  </pre>
 --------------------------------------------------------------------------------------------------------
-## 📬 Pruebas Automatizadas Junit - Microservicio de Usuarios
+## ✅ Pruebas Automatizadas Junit 
 Este proyecto incluye pruebas automatizadas utilizando **JUnit 5**, **TestRestTemplate** y **AssertJ** para validar el comportamiento del CRUD de usuarios.
 
 ### 🔍 Tecnologías Usadas
