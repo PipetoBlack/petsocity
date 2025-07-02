@@ -8,8 +8,9 @@
 
 - [🔧 Tecnologías y Configuración](#-tecnologías-y-configuración)  
 - [🚀 Tips para Git](#-tips-para-git)  
-- [💾 Configuración MySQL](#-configuración-mysql)  
-- [📬 Pruebas con Postman](#-pruebas-con-postman)  
+- [💾 Configuración MySQL](#-configuración-mysql)
+- [✅ Pruebas Automatizadas JUnit – Microservicio de Usuarios](#-pruebas-automatizadas-junit) 
+- [📬 Pruebas con Postman](#-pruebas-con-postman)
 - [👥 Contribuidores](#-contribuidores)  
 
 ---
@@ -75,6 +76,38 @@ spring.datasource.username=root
 spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=update
  </pre>
+--------------------------------------------------------------------------------------------------------
+## ✅ Pruebas Automatizadas Junit 
+Este proyecto incluye pruebas automatizadas utilizando **JUnit 5**, **TestRestTemplate** y **AssertJ** para validar el comportamiento del CRUD de usuarios.
+
+### 🔍 Tecnologías Usadas
+- Spring Boot Test (`@SpringBootTest`)
+- JUnit 5 (`@Test`, `@Order`)
+- TestRestTemplate para pruebas HTTP
+- AssertJ para validaciones
+- DataFaker para datos realistas aleatorios
+
+### 🧪 Resumen de Pruebas
+| Test                                   | Propósito                                                                 |
+|----------------------------------------|--------------------------------------------------------------------------|
+| `contextLoads()`                       | Verifica que el contexto Spring arranca correctamente.                   |
+| `contextLoads2()`                      | Comprueba que el controlador `UsuarioController` no es null.             |
+| `limpiarBaseDeDatos()` (`@BeforeEach`) | Limpia la base de datos antes de cada test.                              |
+| `createUsuarioShouldReturnCreated()`  | Crea un usuario y verifica respuesta válida.                             |
+| `getUsuarios()`                        | Consulta usuarios y valida presencia del creado.                         |
+| `updateUsuarioShouldSucceed()`         | Crea y actualiza un usuario, validando persistencia de cambios.          |
+| `deleteUsuarioShouldRemoveSuccessfully()` | Crea y elimina un usuario, luego comprueba que ya no existe.         |
+
+### ♻️ Buenas Prácticas
+
+- ✅ Datos únicos generados con `Faker`
+- ✅ Tests independientes gracias a `@BeforeEach`
+- ✅ Reutilización de lógica con `crearUsuarioDePrueba(...)`
+- ✅ Validación de respuestas HTTP esperadas (200, 204, 404)
+- ✅ Comentarios claros y código limpio
+
+📌 Estas pruebas garantizan confiabilidad y estabilidad en los endpoints REST del microservicio.
+
 --------------------------------------------------------------------------------------------------------
 ## 📬 Pruebas con Postman
 
