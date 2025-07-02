@@ -1,8 +1,10 @@
 package com.petsocity.petsocity;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +24,7 @@ import net.datafaker.Faker;
 
 // @SpringBootTest
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PetsocityApplicationTests {
 	@Autowired
 	private UsuarioController usuarioController;
