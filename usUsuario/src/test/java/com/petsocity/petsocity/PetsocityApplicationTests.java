@@ -74,6 +74,7 @@ class PetsocityApplicationTests {
     }
 
     @BeforeEach
+    @Order(3)
     void limpiarBaseDeDatos() {
         usuarioRepository.deleteAll();
     }

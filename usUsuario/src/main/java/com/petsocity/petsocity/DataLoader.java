@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.petsocity.petsocity.model.Usuario;
 import com.petsocity.petsocity.repository.UsuarioRepository;
 
-@Profile("dev-eliminarEsteTexto")
+@Profile("dev")
 @Component
 public class DataLoader implements CommandLineRunner{
 
