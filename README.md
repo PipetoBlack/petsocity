@@ -3,11 +3,7 @@
 
 ![Java](https://img.shields.io/badge/Java-24-blue.svg)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3.4.5-brightgreen.svg)
-<<<<<<< HEAD
-![Gradle Groovy](https://img.shields.io/badge/Gradle-Groovy-FF7F00?logo=gradle)
-=======
 ![Gradle](https://img.shields.io/badge/Build-Gradle-Groovy-orange)
->>>>>>> 8d1ee837f8df58d89d54c0f793161877a3720bbb
 
 **PetSocity** es una aplicación distribuida desarrollada con arquitectura de microservicios orientada a tiendas de mascotas. El sistema se compone de tres servicios principales:
 
@@ -125,7 +121,6 @@ spring.datasource.password=TU_PASSWORD
 
 ---
 
-<<<<<<< HEAD
 ## 📚 Swagger - Documentación interactiva de la API
 
 La documentación de la API se genera automáticamente gracias a **springdoc-openapi**, y está habilitada en el entorno `dev`.
@@ -155,7 +150,6 @@ Visualiza, testea y explora los endpoints disponibles:
 El entorno `dev` activa automáticamente la documentación Swagger.
 
 📍 Accede a la documentación: [Swagger UI](http://localhost:8088/doc/swagger-ui.html)
->>>>>>> 8d1ee837f8df58d89d54c0f793161877a3720bbb
 
 ---
 
