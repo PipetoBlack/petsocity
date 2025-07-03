@@ -6,17 +6,59 @@
 ![Gradle Groovy](https://img.shields.io/badge/Gradle-Groovy-FF7F00?logo=gradle)
 
 **PetSocity** es una aplicación distribuida desarrollada con arquitectura de microservicios orientada a tiendas de mascotas. El sistema se compone de tres servicios principales:
+**PetSocity** es una aplicación distribuida desarrollada con arquitectura de microservicios orientada a tiendas de mascotas. El sistema se compone de tres servicios principales:
 
+- 🧑‍💼 `usUsuario`: Gestión de usuarios, autenticación y perfiles (microservicio más completo).
 - 🧑‍💼 `usUsuario`: Gestión de usuarios, autenticación y perfiles (microservicio más completo).
 - 🛒 `usCarrito`: Manejo de carritos de compra.
 - 📦 `usInventario`: Control de productos disponibles.
 
 > Proyecto desarrollado en **Visual Studio Code** sobre **Windows 11**, utilizando **Java 24**, **Spring Boot 3.4.5**, y **Gradle (Groovy DSL)**. Empaquetado como un **JAR ejecutable**.
+> Proyecto desarrollado en **Visual Studio Code** sobre **Windows 11**, utilizando **Java 24**, **Spring Boot 3.4.5**, y **Gradle (Groovy DSL)**. Empaquetado como un **JAR ejecutable**.
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías utilizadas
 
+- Java 24 (2025-03-18)
+- Spring Boot 3.4.5 (Web, Data JPA, HATEOAS)
+- Gradle (Groovy DSL)
+- MySQL
+- Swagger (springdoc-openapi)
+- JUnit 5 + @SpringBootTest
+- Faker (`net.datafaker.Faker`) para generación automática de datos
+- Visual Studio Code (IDE)
+- Sistema operativo: Windows 11
+
+---
+
+## 🐶 Funcionalidades principales
+
+- Registro, edición y eliminación de usuarios
+- Autenticación básica con perfil de usuario
+- Gestión de carritos por sesión
+- Control de inventario y stock de productos
+- Respuestas enriquecidas con **Spring HATEOAS**
+- Documentación automática con **Swagger UI**
+
+---
+
+## ⚙️ Perfiles de configuración
+
+El proyecto utiliza múltiples archivos de propiedades separados por entorno:
+
+- `application.properties`: base principal del proyecto
+- `application-dev.properties`: entorno de desarrollo con Swagger y pruebas reales de endpoints
+- `application-test.properties`: entorno de pruebas automatizadas con SpringBootTest
+- `application-prod.properties`: entorno para despliegue en producción
+
+El perfil activo se define en `application.properties`:
+```properties
+spring.profiles.active=dev
+```
+
+Puedes cambiarlo a `test` o `prod` según el entorno deseado.
 - Java 24 (2025-03-18)
 - Spring Boot 3.4.5 (Web, Data JPA, HATEOAS)
 - Gradle (Groovy DSL)
@@ -67,6 +109,11 @@ petsocity/
 ├── usInventario/         → Microservicio de inventario
 ├── bdpetsocity.sql       → Script de base de datos principal
 ├── bdpetsocity_test.sql  → Script de base de datos para testing
+├── usUsuario/            → Microservicio de usuarios (principal)
+├── usCarrito/            → Microservicio de carritos
+├── usInventario/         → Microservicio de inventario
+├── bdpetsocity.sql       → Script de base de datos principal
+├── bdpetsocity_test.sql  → Script de base de datos para testing
 ```
 
 ---
@@ -78,9 +125,17 @@ petsocity/
 - MySQL Server
 - Visual Studio Code con extensiones Java
 - Postman o navegador con Swagger UI
+- Java JDK 24
+- Gradle
+- MySQL Server
+- Visual Studio Code con extensiones Java
+- Postman o navegador con Swagger UI
 
 ---
 
+## ▶️ Ejecución del microservicio usUsuario
+
+1. **Clonar el repositorio**
 ## ▶️ Ejecución del microservicio usUsuario
 
 1. **Clonar el repositorio**
@@ -90,6 +145,7 @@ git clone https://github.com/PipetoBlack/petsocity.git
 cd petsocity/usUsuario
 ```
 
+2. **Crear las bases de datos en MySQL**
 2. **Crear las bases de datos en MySQL**
 
 ```sql
@@ -106,13 +162,29 @@ spring.profiles.active=dev
 ```
 
 En `application-dev.properties` configura:
+CREATE DATABASE bdpetsocity;
+CREATE DATABASE bdpetsocity_test;
+```
+
+3. **Verificar el perfil activo y configuración en `application.properties`**
+
+Por defecto:
+
+```properties
+spring.profiles.active=dev
+```
+
+En `application-dev.properties` configura:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/bdpetsocity
+spring.datasource.url=jdbc:mysql://localhost:3306/bdpetsocity
 spring.datasource.username=TU_USUARIO
+spring.datasource.password=TU_PASSWORD
 spring.datasource.password=TU_PASSWORD
 ```
 
+4. **Ejecutar el servicio**
 4. **Ejecutar el servicio**
 
 ```bash
@@ -174,11 +246,38 @@ Las respuestas REST incluyen enlaces utilizando Spring HATEOAS:
       }
     ]
   },
+{
+  "_embedded": {
+    "usuarioList": [
+      {
+        "id": 1,
+        "primerNombre": "Calista",
+        "segundoNombre": "Jerald",
+        "primerApellido": "Bartell",
+        "segundoApellido": "Renner",
+        "email": "jefferey.goyette@yahoo.com",
+        "contrasenia": "w3w732i5s47a",
+        "direccion": "516 Cassandra Via, Gleichnerchester, WV 99575",
+        "fechaCreacion": "2025-07-03T02:58:46.035358",
+        "_links": {
+          "self": { "href": "http://localhost:8088/api/v1/usuarios/1" },
+          "usuarios": { "href": "http://localhost:8088/api/v1/usuarios" },
+          "actualizar": { "href": "http://localhost:8088/api/v1/usuarios/1" },
+          "eliminar": { "href": "http://localhost:8088/api/v1/usuarios/1" }
+        }
+      }
+    ]
+  },
   "_links": {
+    "self": { "href": "http://localhost:8088/api/v1/usuarios" }
     "self": { "href": "http://localhost:8088/api/v1/usuarios" }
   }
 }
 ```
+
+Esto se logra con `EntityModel` y un ensamblador personalizado (`UsuarioModelAssembler.java`).
+
+---
 
 Esto se logra con `EntityModel` y un ensamblador personalizado (`UsuarioModelAssembler.java`).
 
@@ -192,10 +291,22 @@ Esto se logra con `EntityModel` y un ensamblador personalizado (`UsuarioModelAss
 - `application-test.properties` configura el entorno de prueba con una base de datos separada (`bdpetsocity_test`)
 
 📦 Ejecuta las pruebas:
+- `@SpringBootTest` para pruebas de integración
+- `TestRestTemplate` para simular peticiones
+- `Faker` para generar usuarios ficticios con datos realistas
+- `application-test.properties` configura el entorno de prueba con una base de datos separada (`bdpetsocity_test`)
+
+📦 Ejecuta las pruebas:
 
 ```bash
 ./gradlew test
 ```
+
+📌 Verifica que el perfil `test` esté activo durante las pruebas (`@ActiveProfiles("test")`).
+
+---
+
+## 📦 Otros microservicios
 
 📌 Verifica que el perfil `test` esté activo durante las pruebas (`@ActiveProfiles("test")`).
 
@@ -214,8 +325,20 @@ Asegúrate de modificar el puerto en su respectivo archivo `application.properti
 Este proyecto se desarrolló como parte de una evaluación académica.  
 Si deseas aportar mejoras o extender su funcionalidad, ¡bienvenido/a!
 
+Sigue pasos similares para `usCarrito` y `usInventario`.
+
+Asegúrate de modificar el puerto en su respectivo archivo `application.properties` para evitar conflictos (`server.port=xxxx`).
+
+---
+
+## 🤝 Contribuciones
+
+Este proyecto se desarrolló como parte de una evaluación académica.  
+Si deseas aportar mejoras o extender su funcionalidad, ¡bienvenido/a!
+
 ---
 
 ## 📝 Licencia
 
+Proyecto académico desarrollado por **Felipe Navarro**, **Vania Vargas**, **Alan Astudillo**, **Alexis Figueroa** como parte de evaluación FullStack.
 Proyecto académico desarrollado por **Felipe Navarro**, **Vania Vargas**, **Alan Astudillo**, **Alexis Figueroa** como parte de evaluación FullStack.
