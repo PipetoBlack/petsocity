@@ -143,7 +143,7 @@ Visualiza, testea y explora los endpoints disponibles:
 - Pruebas interactivas sin necesidad de Postman
 - Exploración de respuestas enriquecidas con **HATEOAS**
 
-💡 _Ideal para validar funcionalidades durante el desarrollo sin levantar clientes externos._
+💡 Ideal para validar funcionalidades durante el desarrollo sin levantar clientes externos.
 =======
 ## 📚 Swagger - Documentación API
 
