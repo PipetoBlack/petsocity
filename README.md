@@ -1,193 +1,159 @@
-# 🐾 Petsocity – Microservicios
 
-> Toda la información que necesitas para levantar el proyecto, colaborar en equipo y probar los servicios.
+# 🐾 PetSocity - Sistema de Microservicios para Gestión de Mascotas
 
----
+**PetSocity** es una aplicación distribuida bajo arquitectura de microservicios orientada a tiendas de mascotas. El sistema se compone de tres servicios principales:
 
-## 📑 Índice
+- 🧑‍💼 `usUsuario`: Gestión de usuarios, autenticación y roles (microservicio más completo).
+- 🛒 `usCarrito`: Manejo de carritos de compra.
+- 📦 `usInventario`: Control de productos disponibles.
 
-- [🔧 Tecnologías y Configuración](#-tecnologías-y-configuración)  
-- [🚀 Tips para Git](#-tips-para-git)  
-- [💾 Configuración MySQL](#-configuración-mysql)
-- [✅ Pruebas Automatizadas JUnit – Microservicio de Usuarios](#-pruebas-automatizadas-junit) 
-- [📬 Pruebas con Postman](#-pruebas-con-postman)
-- [👥 Contribuidores](#-contribuidores)  
+> Proyecto desarrollado en entorno **Visual Studio Code** sobre **Windows 11**, utilizando **Java 24**, **Spring Boot 3.4.5**, y el sistema de construcción **Gradle (Groovy DSL)**. Se empaqueta como un **JAR ejecutable**.
 
 ---
 
+## 🛠️ Tecnologías y herramientas utilizadas
 
-## 🔧 Tecnologías y Configuración
-
-**Stack**  
-- 🛠️ **Build**: Gradle (Groovy)  
-- ☕ **Java**: versión 24  
-- 🌱 **Spring Boot**: 3.4.5  
-- 📦 **Packaging**: JAR  
-
-**Dependencias principales**  
-- ✅ Spring Data JPA  
-- 🌐 Spring Web  
-- 🧩 Lombok  
-- 🐬 MySQL Driver  
+- **Java 24 (2025-03-18)**
+- **Spring Boot 3.4.5**
+  - Spring Web
+  - Spring Security
+  - Spring Data JPA
+  - Spring HATEOAS
+- **Gradle** (con Groovy DSL)
+- **MySQL** (archivo `bdpetsocity.sql`)
+- **Swagger OpenAPI (springdoc-openapi)** para documentación interactiva
+- **Faker (net.datafaker.Faker)** para generación de datos falsos
+- **JUnit 5 + SpringBootTest** para pruebas
+- **Visual Studio Code** como IDE principal
+- **Sistema operativo**: Windows 11
 
 ---
-## 🚀 Tips para Git
 
-### Comandos básicos 
+## 📁 Estructura del repositorio
 
-**Comandos para subir el trabajo a github:**
-1. Guarda tus cambios local
-<pre> git add . </pre>
-2. Agregale un comentario
-<pre> git commit -m "escribe el cambio" </pre>
-3. Súbelo a tu propia rama local
-<pre> git push </pre>
+```plaintext
+petsocity/
+│
+├── usUsuario/       → Microservicio de usuarios (principal)
+├── usCarrito/       → Microservicio de carritos
+├── usInventario/    → Microservicio de inventario
+├── bdpetsocity.sql  → Script SQL para base de datos
+```
 
+---
 
-**Comando para traer los cambios realizados de otra rama**
-1. Múevete a la rama destino, ej. main
-<pre> git checkout main  </pre>
-2. Fusiona la rama desarrollador
-<pre> git merge desarrollador </pre>
-3. Empuja tus cambios
-   se debe de realizar
-<pre> git push  </pre>
+## 📌 Requisitos previos
 
+- [Java JDK 24](https://jdk.java.net/)
+- [Gradle](https://gradle.org/install/)
+- [MySQL Server](https://dev.mysql.com/downloads/mysql/)
+- [Visual Studio Code](https://code.visualstudio.com/) con extensiones Java
+- (Opcional) Postman o navegador para probar endpoints
 
-**Comando para descargar los cambios y actualizar ramas de los demás**
-<pre> git pull  </pre>
-<pre> git fetch  </pre>
+---
 
+## ▶️ Instrucciones de ejecución (usUsuario)
 
-**Crear y cambiar rama**
-<pre> git branch NOMBRE_DE_LA_RAMA  </pre>
-<pre> git checkout NOMBRE_DE_LA_RAMA </pre>
+### 1. Clonar el repositorio
 
----------------------------------------------------------------------------------------------------------
-## 💾 Configuración MySQL
-1. Inicia tu servidor MySQL (localhost):
-	- *user: root*
-	- *pass: root*
-2. Crea la base de datos:
-<pre> CREATE DATABASE bdpetsocity; </pre>
-3. Asegúrate de que application.properties apunte a:
-<pre> spring.datasource.url=jdbc:mysql://localhost:3306/bdpetsocity
-spring.datasource.username=root
-spring.datasource.password=root
+```bash
+git clone https://github.com/PipetoBlack/petsocity.git
+cd petsocity/usUsuario
+```
+
+### 2. Crear la base de datos
+
+Importa el archivo `bdpetsocity.sql` en tu servidor MySQL:
+
+```sql
+CREATE DATABASE petsocity;
+-- Luego importar el contenido desde el archivo .sql
+```
+
+### 3. Configurar la conexión en `application.properties`
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/petsocity
+spring.datasource.username=TU_USUARIO
+spring.datasource.password=TU_CONTRASEÑA
 spring.jpa.hibernate.ddl-auto=update
- </pre>
---------------------------------------------------------------------------------------------------------
-## ✅ Pruebas Automatizadas Junit 
-Este proyecto incluye pruebas automatizadas utilizando **JUnit 5**, **TestRestTemplate** y **AssertJ** para validar el comportamiento del CRUD de usuarios.
+```
 
-### 🔍 Tecnologías Usadas
-- Spring Boot Test (`@SpringBootTest`)
-- JUnit 5 (`@Test`, `@Order`)
-- TestRestTemplate para pruebas HTTP
-- AssertJ para validaciones
-- DataFaker para datos realistas aleatorios
+### 4. Ejecutar el microservicio
 
-### 🧪 Resumen de Pruebas
-| Test                                   | Propósito                                                                 |
-|----------------------------------------|--------------------------------------------------------------------------|
-| `contextLoads()`                       | Verifica que el contexto Spring arranca correctamente.                   |
-| `contextLoads2()`                      | Comprueba que el controlador `UsuarioController` no es null.             |
-| `limpiarBaseDeDatos()` (`@BeforeEach`) | Limpia la base de datos antes de cada test.                              |
-| `createUsuarioShouldReturnCreated()`  | Crea un usuario y verifica respuesta válida.                             |
-| `getUsuarios()`                        | Consulta usuarios y valida presencia del creado.                         |
-| `updateUsuarioShouldSucceed()`         | Crea y actualiza un usuario, validando persistencia de cambios.          |
-| `deleteUsuarioShouldRemoveSuccessfully()` | Crea y elimina un usuario, luego comprueba que ya no existe.         |
+Desde terminal:
 
-### ♻️ Buenas Prácticas
+```bash
+./gradlew bootRun
+```
 
-- ✅ Datos únicos generados con `Faker`
-- ✅ Tests independientes gracias a `@BeforeEach`
-- ✅ Reutilización de lógica con `crearUsuarioDePrueba(...)`
-- ✅ Validación de respuestas HTTP esperadas (200, 204, 404)
-- ✅ Comentarios claros y código limpio
+Desde VS Code:
+- Abre la carpeta `usUsuario`
+- Ejecuta la clase `PetsocityApplication.java`
 
-📌 Estas pruebas garantizan confiabilidad y estabilidad en los endpoints REST del microservicio.
+---
 
---------------------------------------------------------------------------------------------------------
-## 📬 Pruebas con Postman
+## 📚 Documentación interactiva con Swagger
 
-**🔌 Puertos:**
+Este microservicio incluye documentación de su API mediante **Swagger**:
 
-<pre> 8087  – Carrito</pre>
-<pre> 8088  – Usuarios</pre> 
-<pre> 8089  – Inventario/Categoría</pre>
+- Endpoint disponible en:
+  ```
+  http://localhost:8088/doc/swagger-ui/index.html
+  ```
+- Se genera automáticamente usando la dependencia `springdoc-openapi`.
 
-Todas las pruebas se ven reflejadas en el excel. 
- - Link para acceso de postman se da acceso correspondientes
-*Todas las peticiones (GET, POST, PUT, DELETE) están documentadas en la colección y reflejadas en el Excel de pruebas.*
+> Swagger permite explorar y probar los endpoints directamente desde el navegador.
 
---------------------------------------------------------------------------------------------------------
-## 👥 Contribuidores
+---
 
-**FELIPE**
+## 🔗 Soporte HATEOAS
 
-Durante todo el proceso se hicieron varios cambios dentro de código tanto para optimizar y simplificar el proyecto así borrando clases y mejorando las demás para mejor manejo de ellas. Eliminando código obsoleto y mejorar el desempeño al momento de trabajar con postman y la base de datos.
+El servicio `usUsuario` implementa **Spring HATEOAS**, permitiendo enriquecer las respuestas con enlaces relacionados.
 
-Creacion archivo bdpetsocity
-- Se agrega el script sql
+Ejemplo de respuesta con HATEOAS:
 
-Se añade el puerto de enlace 8087,8088 y 8089 para comenzar a hacer pruebas en Postman
-- 8087 para el microservicio de carrito
-- 8088 para el microservicio de usuarios
-- 8089 para el microservicio de inventario / categoria
+```json
+{
+  "id": 1,
+  "nombre": "Felipe",
+  "correo": "felipe@example.com",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8088/api/usuarios/1"
+    },
+    "all": {
+      "href": "http://localhost:8088/api/usuarios"
+    }
+  }
+}
+```
 
-*Durante la correccion de errores, nos percatamos que teniamos problemas en el codigo en general, con los nombres, secuencias e instancias.*
-- ya que basicamente, al momento de que springboot intentaba correr el repositorio este no encontraba la logica detras.
+Esto se logra gracias al ensamblador `UsuarioModelAssembler.java`, que transforma entidades en `EntityModel` enriquecido.
 
-*Ultimas actualizaciones: Después de una gran batalla con la unificación de ciertas clases con entidad relacional, pudimos dar con éxito el levantamiento el servidor 
-para comenzar a hacer pruebas desde postam. BD y backend funcionan correctamente con éxito!!*
+---
 
-Optimización
-- Eliminación de clases innecesarias, ya que se mantienen en carritoController y carritoService
-- Se elimina Rol
-- Se modifica el scrip sql
-- se modifica el modelo usuario para una mejor interaccion con el usuario
+## 🧪 Pruebas
 
----------------------------------------------------------------------------------------------------------------------
-**VANIA**
+Puedes probar la API usando:
 
-Creacion de carpetas
-- controller
-- model
-- repository
-- service
+- **Swagger UI** para visualizar los endpoints.
+- **Postman** para enviar peticiones manuales (CRUD de usuarios).
 
-Creacion de clases
-- Se añaden por primera vez las clases
+El microservicio implementa pruebas automatizadas con:
+- **@SpringBootTest** para pruebas de integración
+- **net.datafaker.Faker** para crear datos falsos y simular usuarios rápidamente
+---
 
-Configuracion de archivo application.propierties
-- Se configura para almacenar de manera local
-- Creacion de las clases en modelo
-- Se corrigen errores en las clases para un mejor flujo de trabajo
+## 📦 Otros servicios
 
-- Se agrega en Usuariocontroller una validación para ver al momento cuando se borra desde el postman
-- Se realizan mejoras y testeos de categoríaController,inventarioController, también se mejora los endpoint y el delete de categoríaController
-- Se migra a carpetas nuevas y mejorando el proyecto así moviendo sus archivos a sus respectivos microservicios
-- Se realiza copias de archivos
-- Se realizaron Pruebas en POSTAMAN dando éxito en todas y cada una de las pruebas
+Sigue pasos similares para ejecutar `usCarrito` y `usInventario`.  
+Recuerda configurar diferentes puertos si los corres simultáneamente (con `server.port=xxxx`).
+(En desarrollo...)
+---
 
-----------------------------------------------------------------------------------------
+## 📝 Licencia
 
-**ALAN**
+Proyecto académico desarrollado por **Felipe Navarro**, Alan Astudillo, Alexis Figueroa, Vania Vargas, como parte de evaluación de desarrollo FullStack.
 
-Solución de conflicto en código
-Creación de rama + Creación de métodos en carrito.
-También se realizo modificaciones en detalle carrito, se modifico nombres mal escritos y se realizan querys para este, también se optimiza código en carritoRepository
-Se completa el informe.
-
----------------------------------------------------------------------------------------
-
-**ALEXIS**
-
-Creación de Rama + creación de métodos y cambios en sección de DETALLECARRITO, y corrección de errores en ellos. También se comento en ellas para saber su uso
-Mejora en Detalle Carrito ya que unos de los métodos estaba mal escrito.
-Se completa la documentación para un mejor entendimiento de lo que se hizo durante el proceso del código 
-
--------------------------------------------------------------------------------
-
-
+---
