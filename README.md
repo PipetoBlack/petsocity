@@ -144,6 +144,53 @@ El microservicio implementa pruebas automatizadas con:
 - **@SpringBootTest** para pruebas de integración
 - **net.datafaker.Faker** para crear datos falsos y simular usuarios rápidamente
 ---
+## 🧪 Pruebas automatizadas
+
+El microservicio `usUsuario` incluye un conjunto de **pruebas automatizadas de integración** usando:
+
+- ✅ **JUnit 5**  
+- ✅ **@SpringBootTest**  
+- ✅ **TestRestTemplate** para simular peticiones reales a los endpoints  
+- ✅ **Faker** (`net.datafaker.Faker`) para generar datos de prueba dinámicos y realistas  
+
+Estas pruebas permiten validar el comportamiento completo de la API en un entorno aislado.
+
+### ⚠️ Importante: uso de base de datos de test
+
+Las pruebas se ejecutan utilizando una base de datos separada llamada **`bdpetsocity_test`**, definida en el archivo `application-test.properties`.  
+Antes de correr los tests, asegúrate de:
+
+1. Haber creado esta base de datos en tu servidor MySQL:  
+   ```sql
+   CREATE DATABASE bdpetsocity_test;
+2. Tener correctamente configurado el archivo src/test/resources/application-test.properties con los siguientes valores:
+   ```
+    spring.datasource.url=jdbc:mysql://localhost:3306/bdpetsocity_test
+    spring.datasource.username=TU_USUARIO
+    spring.datasource.password=TU_CONTRASEÑA
+    spring.jpa.hibernate.ddl-auto=update
+   ```
+3. Verificar que las pruebas no apunten accidentalmente a la base de datos principal (bdpetsocity). El sistema detecta automáticamente este perfil al ejecutar los tests gracias a @ActiveProfiles("test")
+
+### ▶️ Ejecución de pruebas
+
+Puedes ejecutar los tests de las siguientes formas:
+
+#### 💻 Desde la terminal
+
+Ubícate en el directorio del microservicio `usUsuario` y ejecuta:
+
+```bash
+./gradlew test
+```
+> Esto compilará el proyecto y ejecutará todas las pruebas ubicadas en src/test/java.
+
+🧪 Desde Visual Studio Code
+Abre la carpeta usUsuario en VS Code.
+
+Dirígete a la clase de pruebas (por ejemplo, PetsocityApplicationTest.java).
+
+Haz clic en el botón "Run Test" o utiliza el menú contextual para ejecutarlas individualmente.
 
 ## 📦 Otros servicios
 
@@ -154,6 +201,6 @@ Recuerda configurar diferentes puertos si los corres simultáneamente (con `serv
 
 ## 📝 Licencia
 
-Proyecto académico desarrollado por **Felipe Navarro**, Alan Astudillo, Alexis Figueroa, Vania Vargas, como parte de evaluación de desarrollo FullStack.
+Proyecto académico desarrollado por **Felipe Navarro**, **Vania Vargas**, Alan Astudillo, Alexis Figueroa, como parte de evaluación de desarrollo FullStack.
 
 ---
