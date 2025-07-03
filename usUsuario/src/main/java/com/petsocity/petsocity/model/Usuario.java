@@ -60,6 +60,6 @@ public class Usuario {
     @Column(name = "direccion", nullable = false, columnDefinition = "TEXT")
     private String direccion;
 
-    @Column(name = "fecha_creacion", updatable = false, insertable = false)
+    @Column(name = "fecha_creacion", updatable = false)
     private LocalDateTime fechaCreacion;
 }
