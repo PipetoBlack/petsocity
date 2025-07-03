@@ -26,7 +26,7 @@ class PetsocityApplicationTestMockito {
     
     @Test
     void shouldReturnDefaultMessage() throws Exception{
-        this.mockMvc.perform(get("/api/v1/usuarios")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("[")));
+        this.mockMvc.perform(get("/api/v1/usuarios")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("{")));
     }
 
 }
