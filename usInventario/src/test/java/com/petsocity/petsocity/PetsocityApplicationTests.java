@@ -16,7 +16,7 @@ import org.springframework.http.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class PetsocityInventarioApplicationTests {
+class PetsocityApplicationTests {
 
     @LocalServerPort
     private int port;
