@@ -1,9 +1,9 @@
 
 # 🐾 PetSocity - Plataforma distribuida para gestión de tiendas de mascotas (arquitectura de microservicios)
 
-![Java](https://img.shields.io/badge/Java-24-blue.svg)
+![Java](https://img.shields.io/badge/Java-24-brightgreen.svg)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3.4.5-brightgreen.svg)
-![Gradle](https://img.shields.io/badge/Build-Gradle-Groovy-orange)
+![Gradle](https://img.shields.io/badge/Build-Gradle-Groovy)
 
 **PetSocity** es una aplicación distribuida desarrollada con arquitectura de microservicios orientada a tiendas de mascotas. El sistema se compone de tres servicios principales:
 
@@ -32,8 +32,6 @@
 ## 🐶 Funcionalidades principales
 
 - Registro, edición y eliminación de usuarios
-- Autenticación básica con perfil de usuario
-- Gestión de carritos por sesión
 - Control de inventario y stock de productos
 - Respuestas enriquecidas con **Spring HATEOAS**
 - Documentación automática con **Swagger UI**
