@@ -184,19 +184,50 @@ Esto se logra con `EntityModel` y un ensamblador personalizado (`UsuarioModelAss
 
 ## 🧪 Pruebas automatizadas
 
-- `@SpringBootTest` para pruebas de integración
-- `TestRestTemplate` para simular peticiones
-- `Faker` para generar usuarios ficticios con datos realistas
-- `application-test.properties` configura el entorno de prueba con una base de datos separada (`bdpetsocity_test`)
+Este proyecto implementa pruebas automatizadas de integración para validar el correcto funcionamiento del microservicio `usUsuario`.
 
-📦 Ejecuta las pruebas:
+### 🔧 Herramientas utilizadas
 
-```bash
-./gradlew test
-```
+- `@SpringBootTest`: permite levantar el contexto completo de Spring Boot para realizar pruebas de integración realistas.
+- `TestRestTemplate`: simula peticiones HTTP contra la API como si fueran desde un cliente externo.
+- `Faker`: genera datos ficticios realistas (usuarios con nombres, correos, direcciones, etc.) para no depender de datos estáticos.
+- `application-test.properties`: configura un entorno de pruebas aislado con una base de datos separada (`bdpetsocity_test`) y reglas propias (`spring.jpa.hibernate.ddl-auto=create-drop`).
 
-📌 Verifica que el perfil `test` esté activo durante las pruebas (`@ActiveProfiles("test")`).
+### ▶️ Cómo ejecutar los tests
 
+Sigue estos pasos para asegurarte de que las pruebas se ejecuten correctamente:
+
+1. **Asegúrate de que esté activo el perfil de testing**  
+   Verifica que en tu archivo `application.properties` esté definida la siguiente línea:  
+   ```properties
+   
+   spring.profiles.active=test
+2. **Verifica que la base de datos `bdpetsocity_test` exista**
+   Si no existe, revísala en tu gestor MySQL o vuelve al paso 2 del apartado "▶️ Ejecución del microservicio usUsuario" para crearla.
+
+3. **Levanta el microservicio `usUsuario`**
+   Puedes hacerlo desde tu IDE (ejecutando la clase principal) o mediante terminal:
+   ```bash
+    ./gradlew bootRun
+   ```
+   
+4. **Ejecuta los tests**
+   Puedes hacerlo de dos formas:
+   - Desde tu IDE, presionando el ícono ▶️ junto al nombre de la clase PetsocityApplicationTests.
+   - Desde terminal, ejecutando:
+    ```bash
+    ./gradlew test
+   ```
+
+5. **Modo de ejecución**
+   Puedes:
+   - Ejecutar todos los tests de una sola vez.
+   - Ejecutarlos uno por uno, útil si deseas observar cómo se comporta la base de datos entre pruebas (por ejemplo, cómo se insertan o eliminan usuarios de prueba).
+
+📌 **Notas importantes**
+   - Al ejecutar los tests, se limpia automáticamente la base de datos `bdpetsocity_test` antes de cada caso de prueba, gracias al uso de `@BeforeEach` con `usuarioRepository.deleteAll()`.
+   - Al ejecutar los tests uno a uno (manual o depurando), puedes observar el impacto directo de cada test en la base de datos.
+    
 ---
 
 ## 📦 Otros microservicios
